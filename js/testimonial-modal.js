@@ -15,38 +15,62 @@ const testimonialNameInput = document.getElementById('testimonial-name');
 const testimonialServiceInput = document.getElementById('testimonial-service');
 const testimonialMessageInput = document.getElementById('testimonial-message');
 
-// Firebase imports (loaded from CDN)
+// Firebase variables
 let db, storage;
-let addDoc, collection, serverTimestamp;
-let ref, uploadBytes, getDownloadURL;
+let firebaseReady = false;
+
+// Initialize Firebase when DOM is loaded
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    // Wait for Firebase to be available
+    await waitForFirebase();
+    
+    // Import Firebase functions
+    const { addDoc, collection, serverTimestamp } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+    const { ref, uploadBytes, getDownloadURL } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js');
+    
+    // Store Firebase functions globally for this module
+    window.testimonialFirebase = {
+      addDoc,
+      collection,
+      serverTimestamp,
+      ref,
+      uploadBytes,
+      getDownloadURL
+    };
+    
+    db = window.db;
+    storage = window.storage;
+    firebaseReady = true;
+    
+    console.log('Firebase initialized successfully for testimonials');
+  } catch (error) {
+    console.error('Error initializing Firebase:', error);
+    firebaseReady = false;
+  }
+});
 
 // Wait for Firebase to be loaded
-document.addEventListener('DOMContentLoaded', async () => {
-  // Wait for Firebase modules to be available
-  await new Promise(resolve => {
+function waitForFirebase() {
+  return new Promise((resolve, reject) => {
+    let attempts = 0;
+    const maxAttempts = 50; // 5 seconds max wait
+    
     const checkFirebase = () => {
+      attempts++;
+      
       if (window.db && window.storage) {
-        db = window.db;
-        storage = window.storage;
         resolve();
+      } else if (attempts >= maxAttempts) {
+        reject(new Error('Firebase não foi carregado'));
       } else {
         setTimeout(checkFirebase, 100);
       }
     };
+    
     checkFirebase();
   });
-
-  // Import Firebase functions
-  const { addDoc: fbAddDoc, collection: fbCollection, serverTimestamp: fbServerTimestamp } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
-  const { ref: fbRef, uploadBytes: fbUploadBytes, getDownloadURL: fbGetDownloadURL } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js');
-  
-  addDoc = fbAddDoc;
-  collection = fbCollection;
-  serverTimestamp = fbServerTimestamp;
-  ref = fbRef;
-  uploadBytes = fbUploadBytes;
-  getDownloadURL = fbGetDownloadURL;
-});
+}
 
 // Open modal
 addTestimonialBtn.addEventListener('click', () => {
@@ -113,6 +137,12 @@ photoInput.addEventListener('change', function(e) {
 // Upload image to Firebase Storage
 async function uploadTestimonialImage(file, testimonialId) {
   try {
+    if (!firebaseReady || !window.testimonialFirebase) {
+      throw new Error('Firebase não está disponível');
+    }
+    
+    const { ref, uploadBytes, getDownloadURL } = window.testimonialFirebase;
+    
     // Create a reference to the file location
     const imageRef = ref(storage, `testimonials/${testimonialId}/${file.name}`);
     
@@ -132,6 +162,12 @@ async function uploadTestimonialImage(file, testimonialId) {
 // Save testimonial to Firestore
 async function saveTestimonial(testimonialData) {
   try {
+    if (!firebaseReady || !window.testimonialFirebase) {
+      throw new Error('Firebase não está disponível');
+    }
+    
+    const { addDoc, collection, serverTimestamp } = window.testimonialFirebase;
+    
     // Add testimonial to Firestore
     const docRef = await addDoc(collection(db, 'testimonials'), {
       ...testimonialData,
@@ -143,11 +179,40 @@ async function saveTestimonial(testimonialData) {
     return docRef.id;
   } catch (error) {
     console.error('Error saving testimonial:', error);
-    throw new Error('Erro ao salvar depoimento');
+    throw new Error('Erro ao salvar depoimento no banco de dados');
   }
 }
 
-// Form submission with Firebase integration
+// Fallback: Save testimonial via email if Firebase fails
+async function saveTestimonialFallback(testimonialData) {
+  try {
+    const formData = new FormData();
+    formData.append('name', testimonialData.name);
+    formData.append('service', testimonialData.service);
+    formData.append('testimonial', testimonialData.testimonial);
+    formData.append('_subject', 'Novo Depoimento - ' + testimonialData.name);
+    formData.append('_captcha', 'false');
+    
+    const response = await fetch('https://formsubmit.co/ajax/kayofellipefer@gmail.com', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+    
+    if (!response.ok) {
+      throw new Error('Erro ao enviar por email');
+    }
+    
+    return 'email_fallback';
+  } catch (error) {
+    console.error('Error with email fallback:', error);
+    throw new Error('Erro ao enviar depoimento');
+  }
+}
+
+// Form submission with Firebase integration and fallback
 testimonialForm.addEventListener('submit', async function(e) {
   e.preventDefault();
   
@@ -171,18 +236,34 @@ testimonialForm.addEventListener('submit', async function(e) {
       photoURL: null
     };
     
-    // Save testimonial to get ID first
-    const testimonialId = await saveTestimonial(testimonialData);
+    let testimonialId;
+    let useFirebase = firebaseReady && window.testimonialFirebase;
     
-    // Upload image if provided
-    if (photoInput.files[0]) {
+    if (useFirebase) {
+      try {
+        // Try to save with Firebase first
+        testimonialId = await saveTestimonial(testimonialData);
+        console.log('Testimonial saved to Firebase:', testimonialId);
+      } catch (firebaseError) {
+        console.warn('Firebase failed, using email fallback:', firebaseError);
+        useFirebase = false;
+      }
+    }
+    
+    // If Firebase failed or not available, use email fallback
+    if (!useFirebase) {
+      testimonialId = await saveTestimonialFallback(testimonialData);
+      console.log('Testimonial sent via email fallback');
+    }
+    
+    // Upload image if provided and Firebase is working
+    if (photoInput.files[0] && useFirebase && testimonialId !== 'email_fallback') {
       try {
         const photoURL = await uploadTestimonialImage(photoInput.files[0], testimonialId);
-        
-        // Update testimonial with photo URL
-        // Note: In a real app, you'd update the document with the photo URL
-        // For now, we'll just log it
         console.log('Photo uploaded successfully:', photoURL);
+        
+        // In a production app, you would update the document with the photo URL
+        // For now, we'll just log it
       } catch (imageError) {
         console.error('Error uploading image:', imageError);
         // Continue without image - testimonial is still saved
@@ -190,7 +271,7 @@ testimonialForm.addEventListener('submit', async function(e) {
     }
     
     // Show success message
-    showSuccessMessage();
+    showSuccessMessage(useFirebase);
     
     // Reset form and close modal
     resetForm();
@@ -273,14 +354,18 @@ function resetForm() {
 }
 
 // Show success message
-function showSuccessMessage() {
+function showSuccessMessage(usedFirebase = true) {
+  const message = usedFirebase 
+    ? 'Depoimento enviado com sucesso! Será analisado antes de ser publicado.'
+    : 'Depoimento enviado com sucesso! Em breve entrarei em contato.';
+    
   // Create success notification
   const notification = document.createElement('div');
   notification.className = 'success-notification';
   notification.innerHTML = `
     <div class="notification-content">
       <i class="fas fa-check-circle"></i>
-      <span>Depoimento enviado com sucesso! Será analisado antes de ser publicado.</span>
+      <span>${message}</span>
     </div>
   `;
   
