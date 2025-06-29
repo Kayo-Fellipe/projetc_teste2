@@ -159,7 +159,7 @@ async function uploadTestimonialImage(file, testimonialId) {
   }
 }
 
-// Save testimonial to Firestore
+// Save testimonial to Firestore (automatically approved)
 async function saveTestimonial(testimonialData) {
   try {
     if (!firebaseReady || !window.testimonialFirebase) {
@@ -168,18 +168,38 @@ async function saveTestimonial(testimonialData) {
     
     const { addDoc, collection, serverTimestamp } = window.testimonialFirebase;
     
-    // Add testimonial to Firestore
+    // Add testimonial to Firestore - automatically approved
     const docRef = await addDoc(collection(db, 'testimonials'), {
       ...testimonialData,
       createdAt: serverTimestamp(),
-      approved: false, // Testimonials need approval before showing
-      status: 'pending'
+      approved: true, // Automatically approved
+      status: 'approved'
     });
     
     return docRef.id;
   } catch (error) {
     console.error('Error saving testimonial:', error);
     throw new Error('Erro ao salvar depoimento no banco de dados');
+  }
+}
+
+// Update testimonial with photo URL
+async function updateTestimonialWithPhoto(testimonialId, photoURL) {
+  try {
+    if (!firebaseReady || !window.testimonialFirebase) {
+      return;
+    }
+    
+    const { doc, updateDoc } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+    
+    const testimonialRef = doc(db, 'testimonials', testimonialId);
+    await updateDoc(testimonialRef, {
+      photoURL: photoURL
+    });
+    
+    console.log('Testimonial updated with photo URL');
+  } catch (error) {
+    console.error('Error updating testimonial with photo:', error);
   }
 }
 
@@ -244,6 +264,28 @@ testimonialForm.addEventListener('submit', async function(e) {
         // Try to save with Firebase first
         testimonialId = await saveTestimonial(testimonialData);
         console.log('Testimonial saved to Firebase:', testimonialId);
+        
+        // Upload image if provided
+        if (photoInput.files[0]) {
+          try {
+            const photoURL = await uploadTestimonialImage(photoInput.files[0], testimonialId);
+            console.log('Photo uploaded successfully:', photoURL);
+            
+            // Update testimonial with photo URL
+            await updateTestimonialWithPhoto(testimonialId, photoURL);
+          } catch (imageError) {
+            console.error('Error uploading image:', imageError);
+            // Continue without image - testimonial is still saved
+          }
+        }
+        
+        // Add testimonial to carousel immediately
+        addTestimonialToCarousel({
+          ...testimonialData,
+          id: testimonialId,
+          photoURL: photoInput.files[0] ? await uploadTestimonialImage(photoInput.files[0], testimonialId).catch(() => null) : null
+        });
+        
       } catch (firebaseError) {
         console.warn('Firebase failed, using email fallback:', firebaseError);
         useFirebase = false;
@@ -254,20 +296,6 @@ testimonialForm.addEventListener('submit', async function(e) {
     if (!useFirebase) {
       testimonialId = await saveTestimonialFallback(testimonialData);
       console.log('Testimonial sent via email fallback');
-    }
-    
-    // Upload image if provided and Firebase is working
-    if (photoInput.files[0] && useFirebase && testimonialId !== 'email_fallback') {
-      try {
-        const photoURL = await uploadTestimonialImage(photoInput.files[0], testimonialId);
-        console.log('Photo uploaded successfully:', photoURL);
-        
-        // In a production app, you would update the document with the photo URL
-        // For now, we'll just log it
-      } catch (imageError) {
-        console.error('Error uploading image:', imageError);
-        // Continue without image - testimonial is still saved
-      }
     }
     
     // Show success message
@@ -286,6 +314,96 @@ testimonialForm.addEventListener('submit', async function(e) {
     submitBtn.disabled = false;
   }
 });
+
+// Add testimonial to carousel immediately
+function addTestimonialToCarousel(testimonialData) {
+  try {
+    const testimonialsContainer = document.getElementById('testimonials-container');
+    if (!testimonialsContainer) return;
+    
+    // Create new testimonial card
+    const newCard = document.createElement('div');
+    newCard.className = 'testimonial-card';
+    
+    // Get service display name
+    const serviceDisplayName = getServiceDisplayName(testimonialData.service);
+    
+    // Default avatar if no photo provided
+    const avatarSrc = testimonialData.photoURL || 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
+    
+    newCard.innerHTML = `
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">
+          <img src="${avatarSrc}" alt="${testimonialData.name}">
+        </div>
+        <div class="testimonial-author-info">
+          <h4>${testimonialData.name}</h4>
+          <p>${serviceDisplayName}</p>
+        </div>
+      </div>
+      <div class="testimonial-content">
+        <div class="testimonial-text">
+          "${testimonialData.testimonial}"
+        </div>
+      </div>
+    `;
+    
+    // Add to container
+    testimonialsContainer.appendChild(newCard);
+    
+    // Update dots navigation
+    updateTestimonialDots();
+    
+    // Refresh testimonial carousel
+    if (window.refreshTestimonialCarousel) {
+      window.refreshTestimonialCarousel();
+    }
+    
+    console.log('Testimonial added to carousel');
+  } catch (error) {
+    console.error('Error adding testimonial to carousel:', error);
+  }
+}
+
+// Get service display name
+function getServiceDisplayName(serviceValue) {
+  const serviceMap = {
+    'filmagem-casamento': 'Filmagem - Casamentos',
+    'filmagem-corporativo': 'Filmagem - Corporativo',
+    'filmagem-imobiliario': 'Filmagem - Imobiliário',
+    'filmagem-publicidade': 'Filmagem - Publicidade',
+    'fotografia-ensaios': 'Fotografia - Ensaios',
+    'fotografia-casamento': 'Fotografia - Casamentos',
+    'fotografia-imoveis': 'Fotografia - Imóveis',
+    'fotografia-esportivos': 'Fotografia - Esportivos',
+    'edicao-criativa': 'Edição - Criativa',
+    'edicao-correcao': 'Edição - Correção',
+    'edicao-redes-sociais': 'Edição - Redes Sociais',
+    'edicao-trilha': 'Edição - Trilha Sonora'
+  };
+  
+  return serviceMap[serviceValue] || 'Cliente';
+}
+
+// Update testimonial dots
+function updateTestimonialDots() {
+  const dotsContainer = document.getElementById('testimonial-dots');
+  const testimonialCards = document.querySelectorAll('.testimonial-card');
+  
+  if (!dotsContainer) return;
+  
+  // Clear existing dots
+  dotsContainer.innerHTML = '';
+  
+  // Create new dots
+  testimonialCards.forEach((_, index) => {
+    const dot = document.createElement('span');
+    dot.className = 'testimonial-dot';
+    if (index === 0) dot.classList.add('active');
+    dot.setAttribute('data-slide', index);
+    dotsContainer.appendChild(dot);
+  });
+}
 
 // Form validation
 function validateTestimonialForm() {
@@ -356,7 +474,7 @@ function resetForm() {
 // Show success message
 function showSuccessMessage(usedFirebase = true) {
   const message = usedFirebase 
-    ? 'Depoimento enviado com sucesso! Será analisado antes de ser publicado.'
+    ? 'Depoimento enviado com sucesso! Já aparece no carrossel de depoimentos.'
     : 'Depoimento enviado com sucesso! Em breve entrarei em contato.';
     
   // Create success notification

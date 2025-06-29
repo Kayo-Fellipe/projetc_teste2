@@ -133,53 +133,57 @@
         <div class="section-line"></div>
       </div>
       <div class="testimonials-carousel">
-        <div class="testimonial-card active">
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">
-              <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Maria & João">
+        <!-- Testimonials will be loaded dynamically -->
+        <div id="testimonials-container">
+          <!-- Default testimonials will be here initially -->
+          <div class="testimonial-card active">
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">
+                <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Maria & João">
+              </div>
+              <div class="testimonial-author-info">
+                <h4>Maria & João</h4>
+                <p>Wedding Clients</p>
+              </div>
             </div>
-            <div class="testimonial-author-info">
-              <h4>Maria & João</h4>
-              <p>Wedding Clients</p>
-            </div>
-          </div>
-          <div class="testimonial-content">
-            <div class="testimonial-text">
-              "Kayo captured our wedding day perfectly. His attention to detail and ability to find the perfect moments made our video truly special. We couldn't be happier with the results!"
-            </div>
-          </div>
-        </div>
-        
-        <div class="testimonial-card">
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">
-              <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Lucas Silva">
-            </div>
-            <div class="testimonial-author-info">
-              <h4>Lucas Silva</h4>
-              <p>Marketing Director</p>
+            <div class="testimonial-content">
+              <div class="testimonial-text">
+                "Kayo captured our wedding day perfectly. His attention to detail and ability to find the perfect moments made our video truly special. We couldn't be happier with the results!"
+              </div>
             </div>
           </div>
-          <div class="testimonial-content">
-            <div class="testimonial-text">
-              "Working with Kayo for our brand campaign was an excellent experience. He understood our vision and delivered stunning visuals that perfectly represented our brand identity."
+          
+          <div class="testimonial-card">
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">
+                <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Lucas Silva">
+              </div>
+              <div class="testimonial-author-info">
+                <h4>Lucas Silva</h4>
+                <p>Marketing Director</p>
+              </div>
+            </div>
+            <div class="testimonial-content">
+              <div class="testimonial-text">
+                "Working with Kayo for our brand campaign was an excellent experience. He understood our vision and delivered stunning visuals that perfectly represented our brand identity."
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="testimonial-card">
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">
-              <img src="https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Camila Alves">
+          
+          <div class="testimonial-card">
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">
+                <img src="https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Camila Alves">
+              </div>
+              <div class="testimonial-author-info">
+                <h4>Camila Alves</h4>
+                <p>E-commerce Owner</p>
+              </div>
             </div>
-            <div class="testimonial-author-info">
-              <h4>Camila Alves</h4>
-              <p>E-commerce Owner</p>
-            </div>
-          </div>
-          <div class="testimonial-content">
-            <div class="testimonial-text">
-              "The product photos Kayo created for our online store increased our sales by 30%. His professionalism and talent are unmatched. We'll definitely be working together again!"
+            <div class="testimonial-content">
+              <div class="testimonial-text">
+                "The product photos Kayo created for our online store increased our sales by 30%. His professionalism and talent are unmatched. We'll definitely be working together again!"
+              </div>
             </div>
           </div>
         </div>
@@ -188,7 +192,7 @@
           <button class="testimonial-arrow" id="prev-testimonial">
             <i class="fas fa-chevron-left"></i>
           </button>
-          <div class="testimonial-dots">
+          <div class="testimonial-dots" id="testimonial-dots">
             <span class="testimonial-dot active" data-slide="0"></span>
             <span class="testimonial-dot" data-slide="1"></span>
             <span class="testimonial-dot" data-slide="2"></span>
@@ -389,14 +393,14 @@
     import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
     import { getStorage } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
     
-    // Initialize Firebase
+    // Initialize Firebase with updated config
     const firebaseConfig = {
-      apiKey: "AIzaSyApr4kr3NLKUJhBaAPP4T0RW3LJAkVTMus",
-      authDomain: "depoimentos-59c23.firebaseapp.com",
-      projectId: "depoimentos-59c23",
-      storageBucket: "depoimentos-59c23.firebasestorage.app",
-      messagingSenderId: "641193524483",
-      appId: "1:641193524483:web:efc1e7e25bcb60820c3d36"
+      apiKey: "AIzaSyD0od0zpsDjkUo9CSBVYzjA2gsCOW6_ubE",
+      authDomain: "depoimentos-clientes-a1a64.firebaseapp.com",
+      projectId: "depoimentos-clientes-a1a64",
+      storageBucket: "depoimentos-clientes-a1a64.firebasestorage.app",
+      messagingSenderId: "1050032339145",
+      appId: "1:1050032339145:web:a2c1c81da73db17963b518"
     };
     
     try {
