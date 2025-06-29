@@ -15,50 +15,31 @@ let db;
 let firebaseReady = false;
 
 // Initialize Firebase integration
-document.addEventListener('DOMContentLoaded', async () => {
-  try {
-    // Wait for Firebase to be available
-    await waitForFirebase();
-    
-    // Import Firebase functions
-    const { collection, query, orderBy, onSnapshot, where } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
-    
+function initializeFirebaseTestimonials() {
+  if (window.db) {
     db = window.db;
     firebaseReady = true;
-    
-    // Load testimonials from Firebase
+    console.log('Firebase ready for testimonials carousel');
     loadTestimonialsFromFirebase();
-    
-    console.log('Testimonials Firebase integration ready');
-  } catch (error) {
-    console.error('Error initializing Firebase for testimonials:', error);
-    firebaseReady = false;
-    // Continue with default testimonials
-    initializeCarousel();
+    return true;
   }
+  return false;
+}
+
+// Wait for Firebase to be ready
+window.addEventListener('firebaseReady', () => {
+  initializeFirebaseTestimonials();
 });
 
-// Wait for Firebase to be loaded
-function waitForFirebase() {
-  return new Promise((resolve, reject) => {
-    let attempts = 0;
-    const maxAttempts = 50; // 5 seconds max wait
-    
-    const checkFirebase = () => {
-      attempts++;
-      
-      if (window.db) {
-        resolve();
-      } else if (attempts >= maxAttempts) {
-        reject(new Error('Firebase não foi carregado'));
-      } else {
-        setTimeout(checkFirebase, 100);
-      }
-    };
-    
-    checkFirebase();
-  });
-}
+// Also check immediately in case Firebase is already ready
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    if (!initializeFirebaseTestimonials()) {
+      // Firebase not ready, initialize with default testimonials
+      initializeCarousel();
+    }
+  }, 1000);
+});
 
 // Load testimonials from Firebase
 async function loadTestimonialsFromFirebase() {
@@ -88,6 +69,10 @@ async function loadTestimonialsFromFirebase() {
       
       // Combine with default testimonials
       combineTestimonials(firebaseTestimonials);
+    }, (error) => {
+      console.error('Error listening to testimonials:', error);
+      // Continue with default testimonials
+      initializeCarousel();
     });
     
   } catch (error) {
@@ -101,8 +86,9 @@ function combineTestimonials(firebaseTestimonials) {
   const testimonialsContainer = document.getElementById('testimonials-container');
   if (!testimonialsContainer) return;
   
-  // Keep default testimonials and add Firebase ones
-  const defaultTestimonials = testimonialsContainer.innerHTML;
+  // Remove existing Firebase testimonials (keep only default ones)
+  const existingFirebaseCards = testimonialsContainer.querySelectorAll('[data-firebase-id]');
+  existingFirebaseCards.forEach(card => card.remove());
   
   // Add Firebase testimonials
   firebaseTestimonials.forEach(testimonial => {
@@ -118,7 +104,7 @@ function combineTestimonials(firebaseTestimonials) {
 function createTestimonialCard(testimonial) {
   const card = document.createElement('div');
   card.className = 'testimonial-card';
-  card.setAttribute('data-id', testimonial.id);
+  card.setAttribute('data-firebase-id', testimonial.id);
   
   // Get service display name
   const serviceDisplayName = getServiceDisplayName(testimonial.service);
@@ -175,12 +161,15 @@ function refreshCarousel() {
   // Update dots
   updateDots();
   
-  // Reset to first slide
-  currentSlide = 0;
+  // Reset to first slide if current slide is out of bounds
+  if (currentSlide >= slideCount) {
+    currentSlide = 0;
+  }
+  
+  // Show current slide
   showSlide(currentSlide);
   
-  // Reinitialize carousel
-  initializeCarousel();
+  console.log('Carousel refreshed with', slideCount, 'testimonials');
 }
 
 // Global function to refresh carousel (called from testimonial-modal.js)
@@ -198,7 +187,7 @@ function updateDots() {
   testimonialCards.forEach((_, index) => {
     const dot = document.createElement('span');
     dot.className = 'testimonial-dot';
-    if (index === 0) dot.classList.add('active');
+    if (index === currentSlide) dot.classList.add('active');
     dot.setAttribute('data-slide', index);
     
     // Add click event
@@ -257,42 +246,38 @@ function prevSlide() {
 
 // Initialize carousel
 function initializeCarousel() {
-  // Event listeners
-  if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-  if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-
-  // Dot navigation
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-      currentSlide = index;
-      showSlide(currentSlide);
-    });
-  });
-
-  // Keyboard navigation
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') {
-      prevSlide();
-    } else if (e.key === 'ArrowRight') {
-      nextSlide();
-    }
-  });
+  // Update references
+  testimonialCards = document.querySelectorAll('.testimonial-card');
+  slideCount = testimonialCards.length;
+  
+  // Update dots
+  updateDots();
+  
+  // Event listeners (remove existing ones first)
+  if (nextBtn) {
+    nextBtn.removeEventListener('click', nextSlide);
+    nextBtn.addEventListener('click', nextSlide);
+  }
+  
+  if (prevBtn) {
+    prevBtn.removeEventListener('click', prevSlide);
+    prevBtn.addEventListener('click', prevSlide);
+  }
 
   // Auto slide every 5 seconds
-  let slideInterval = setInterval(nextSlide, 5000);
+  if (window.testimonialInterval) {
+    clearInterval(window.testimonialInterval);
+  }
+  window.testimonialInterval = setInterval(nextSlide, 5000);
 
   // Pause auto slide on hover
   const testimonialCarousel = document.querySelector('.testimonials-carousel');
   if (testimonialCarousel) {
-    testimonialCarousel.addEventListener('mouseenter', () => {
-      clearInterval(slideInterval);
-    });
-
-    // Resume auto slide on mouse leave
-    testimonialCarousel.addEventListener('mouseleave', () => {
-      clearInterval(slideInterval);
-      slideInterval = setInterval(nextSlide, 5000);
-    });
+    testimonialCarousel.removeEventListener('mouseenter', pauseSlideshow);
+    testimonialCarousel.removeEventListener('mouseleave', resumeSlideshow);
+    
+    testimonialCarousel.addEventListener('mouseenter', pauseSlideshow);
+    testimonialCarousel.addEventListener('mouseleave', resumeSlideshow);
   }
 
   // Touch swipe functionality for mobile
@@ -300,14 +285,20 @@ function initializeCarousel() {
   let touchEndX = 0;
 
   if (testimonialCarousel) {
-    testimonialCarousel.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    });
+    testimonialCarousel.removeEventListener('touchstart', handleTouchStart);
+    testimonialCarousel.removeEventListener('touchend', handleTouchEnd);
+    
+    testimonialCarousel.addEventListener('touchstart', handleTouchStart);
+    testimonialCarousel.addEventListener('touchend', handleTouchEnd);
+  }
 
-    testimonialCarousel.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    });
+  function handleTouchStart(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  }
+
+  function handleTouchEnd(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
   }
 
   function handleSwipe() {
@@ -324,15 +315,30 @@ function initializeCarousel() {
     }
   }
 
+  function pauseSlideshow() {
+    if (window.testimonialInterval) {
+      clearInterval(window.testimonialInterval);
+    }
+  }
+
+  function resumeSlideshow() {
+    if (window.testimonialInterval) {
+      clearInterval(window.testimonialInterval);
+    }
+    window.testimonialInterval = setInterval(nextSlide, 5000);
+  }
+
   // Initialize first slide
-  showSlide(0);
+  showSlide(currentSlide);
+  
+  console.log('Testimonial carousel initialized with', slideCount, 'slides');
 }
 
-// Initialize carousel when DOM is loaded (fallback)
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(initializeCarousel, 1000); // Delay to ensure Firebase has time to load
-  });
-} else {
-  setTimeout(initializeCarousel, 1000);
-}
+// Keyboard navigation (global)
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') {
+    prevSlide();
+  } else if (e.key === 'ArrowRight') {
+    nextSlide();
+  }
+});

@@ -407,7 +407,11 @@
       const app = initializeApp(firebaseConfig);
       window.db = getFirestore(app);
       window.storage = getStorage(app);
+      window.firebaseApp = app;
       console.log('Firebase initialized successfully');
+      
+      // Dispatch event to notify other scripts
+      window.dispatchEvent(new CustomEvent('firebaseReady'));
     } catch (error) {
       console.error('Error initializing Firebase:', error);
       // Firebase will be unavailable, but the app will still work with email fallback
