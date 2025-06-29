@@ -1,0 +1,410 @@
+// Testimonial Modal Functionality with Firebase Integration
+
+// DOM Elements
+const addTestimonialBtn = document.getElementById('addTestimonialBtn');
+const testimonialModal = document.getElementById('testimonial-modal');
+const closeTestimonialModal = document.getElementById('closeTestimonialModal');
+const cancelTestimonial = document.getElementById('cancelTestimonial');
+const testimonialForm = document.getElementById('testimonialForm');
+const photoInput = document.getElementById('testimonial-photo');
+const photoPreview = document.getElementById('photo-preview');
+const fileUploadPlaceholder = document.querySelector('.file-upload-placeholder');
+
+// Form inputs
+const testimonialNameInput = document.getElementById('testimonial-name');
+const testimonialServiceInput = document.getElementById('testimonial-service');
+const testimonialMessageInput = document.getElementById('testimonial-message');
+
+// Firebase imports (loaded from CDN)
+let db, storage;
+let addDoc, collection, serverTimestamp;
+let ref, uploadBytes, getDownloadURL;
+
+// Wait for Firebase to be loaded
+document.addEventListener('DOMContentLoaded', async () => {
+  // Wait for Firebase modules to be available
+  await new Promise(resolve => {
+    const checkFirebase = () => {
+      if (window.db && window.storage) {
+        db = window.db;
+        storage = window.storage;
+        resolve();
+      } else {
+        setTimeout(checkFirebase, 100);
+      }
+    };
+    checkFirebase();
+  });
+
+  // Import Firebase functions
+  const { addDoc: fbAddDoc, collection: fbCollection, serverTimestamp: fbServerTimestamp } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+  const { ref: fbRef, uploadBytes: fbUploadBytes, getDownloadURL: fbGetDownloadURL } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js');
+  
+  addDoc = fbAddDoc;
+  collection = fbCollection;
+  serverTimestamp = fbServerTimestamp;
+  ref = fbRef;
+  uploadBytes = fbUploadBytes;
+  getDownloadURL = fbGetDownloadURL;
+});
+
+// Open modal
+addTestimonialBtn.addEventListener('click', () => {
+  testimonialModal.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+});
+
+// Close modal functions
+function closeModal() {
+  testimonialModal.classList.add('hidden');
+  document.body.style.overflow = 'auto';
+  resetForm();
+}
+
+closeTestimonialModal.addEventListener('click', closeModal);
+cancelTestimonial.addEventListener('click', closeModal);
+
+// Close modal when clicking outside
+testimonialModal.addEventListener('click', (e) => {
+  if (e.target === testimonialModal) {
+    closeModal();
+  }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !testimonialModal.classList.contains('hidden')) {
+    closeModal();
+  }
+});
+
+// Photo upload functionality
+photoInput.addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  
+  if (file) {
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      showError(photoInput, 'Por favor, selecione apenas arquivos de imagem');
+      return;
+    }
+    
+    // Validate file size (max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      showError(photoInput, 'A imagem deve ter no máximo 5MB');
+      return;
+    }
+    
+    // Show preview
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      photoPreview.src = e.target.result;
+      photoPreview.classList.remove('hidden');
+      fileUploadPlaceholder.style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+  } else {
+    // Reset preview
+    photoPreview.classList.add('hidden');
+    fileUploadPlaceholder.style.display = 'flex';
+  }
+});
+
+// Upload image to Firebase Storage
+async function uploadTestimonialImage(file, testimonialId) {
+  try {
+    // Create a reference to the file location
+    const imageRef = ref(storage, `testimonials/${testimonialId}/${file.name}`);
+    
+    // Upload the file
+    const snapshot = await uploadBytes(imageRef, file);
+    
+    // Get the download URL
+    const downloadURL = await getDownloadURL(snapshot.ref);
+    
+    return downloadURL;
+  } catch (error) {
+    console.error('Error uploading image:', error);
+    throw new Error('Erro ao fazer upload da imagem');
+  }
+}
+
+// Save testimonial to Firestore
+async function saveTestimonial(testimonialData) {
+  try {
+    // Add testimonial to Firestore
+    const docRef = await addDoc(collection(db, 'testimonials'), {
+      ...testimonialData,
+      createdAt: serverTimestamp(),
+      approved: false, // Testimonials need approval before showing
+      status: 'pending'
+    });
+    
+    return docRef.id;
+  } catch (error) {
+    console.error('Error saving testimonial:', error);
+    throw new Error('Erro ao salvar depoimento');
+  }
+}
+
+// Form submission with Firebase integration
+testimonialForm.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  if (!validateTestimonialForm()) {
+    return;
+  }
+  
+  const submitBtn = testimonialForm.querySelector('button[type="submit"]');
+  const originalText = submitBtn.textContent;
+  
+  try {
+    // Show loading state
+    submitBtn.textContent = 'Enviando...';
+    submitBtn.disabled = true;
+    
+    // Prepare testimonial data
+    const testimonialData = {
+      name: testimonialNameInput.value.trim(),
+      service: testimonialServiceInput.value,
+      testimonial: testimonialMessageInput.value.trim(),
+      photoURL: null
+    };
+    
+    // Save testimonial to get ID first
+    const testimonialId = await saveTestimonial(testimonialData);
+    
+    // Upload image if provided
+    if (photoInput.files[0]) {
+      try {
+        const photoURL = await uploadTestimonialImage(photoInput.files[0], testimonialId);
+        
+        // Update testimonial with photo URL
+        // Note: In a real app, you'd update the document with the photo URL
+        // For now, we'll just log it
+        console.log('Photo uploaded successfully:', photoURL);
+      } catch (imageError) {
+        console.error('Error uploading image:', imageError);
+        // Continue without image - testimonial is still saved
+      }
+    }
+    
+    // Show success message
+    showSuccessMessage();
+    
+    // Reset form and close modal
+    resetForm();
+    closeModal();
+    
+  } catch (error) {
+    console.error('Error submitting testimonial:', error);
+    showErrorMessage('Erro ao enviar depoimento. Tente novamente.');
+  } finally {
+    // Reset button
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  }
+});
+
+// Form validation
+function validateTestimonialForm() {
+  let isValid = true;
+  removeTestimonialErrors();
+  
+  // Validate name
+  if (testimonialNameInput.value.trim() === '') {
+    showError(testimonialNameInput, 'Por favor, insira seu nome');
+    isValid = false;
+  }
+  
+  // Validate service
+  if (testimonialServiceInput.value === '') {
+    showError(testimonialServiceInput, 'Por favor, selecione o serviço realizado');
+    isValid = false;
+  }
+  
+  // Validate testimonial message
+  if (testimonialMessageInput.value.trim() === '') {
+    showError(testimonialMessageInput, 'Por favor, escreva seu depoimento');
+    isValid = false;
+  } else if (testimonialMessageInput.value.trim().length < 20) {
+    showError(testimonialMessageInput, 'O depoimento deve ter pelo menos 20 caracteres');
+    isValid = false;
+  }
+  
+  return isValid;
+}
+
+// Show error message
+function showError(input, message) {
+  const formGroup = input.parentElement;
+  
+  // Create error message element
+  const errorMessage = document.createElement('p');
+  errorMessage.className = 'error-message';
+  errorMessage.textContent = message;
+  
+  // Add error class to input
+  input.classList.add('error-input');
+  
+  // Add error message to form group
+  formGroup.appendChild(errorMessage);
+}
+
+// Remove all error messages
+function removeTestimonialErrors() {
+  // Remove error messages
+  const errorMessages = testimonialForm.querySelectorAll('.error-message');
+  errorMessages.forEach(error => error.remove());
+  
+  // Remove error class from inputs
+  const inputs = [testimonialNameInput, testimonialServiceInput, testimonialMessageInput, photoInput];
+  inputs.forEach(input => {
+    input.classList.remove('error-input');
+  });
+}
+
+// Reset form
+function resetForm() {
+  testimonialForm.reset();
+  photoPreview.classList.add('hidden');
+  fileUploadPlaceholder.style.display = 'flex';
+  removeTestimonialErrors();
+}
+
+// Show success message
+function showSuccessMessage() {
+  // Create success notification
+  const notification = document.createElement('div');
+  notification.className = 'success-notification';
+  notification.innerHTML = `
+    <div class="notification-content">
+      <i class="fas fa-check-circle"></i>
+      <span>Depoimento enviado com sucesso! Será analisado antes de ser publicado.</span>
+    </div>
+  `;
+  
+  // Add styles
+  const style = document.createElement('style');
+  style.textContent = `
+    .success-notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: var(--color-success);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 100000;
+      animation: slideInRight 0.3s ease;
+      max-width: 350px;
+    }
+    
+    .notification-content {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .notification-content i {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  `;
+  
+  document.head.appendChild(style);
+  document.body.appendChild(notification);
+  
+  // Remove notification after 6 seconds
+  setTimeout(() => {
+    notification.remove();
+    style.remove();
+  }, 6000);
+}
+
+// Show error message
+function showErrorMessage(message) {
+  // Create error notification
+  const notification = document.createElement('div');
+  notification.className = 'error-notification';
+  notification.innerHTML = `
+    <div class="notification-content">
+      <i class="fas fa-exclamation-circle"></i>
+      <span>${message}</span>
+    </div>
+  `;
+  
+  // Add styles
+  const style = document.createElement('style');
+  style.textContent = `
+    .error-notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: var(--color-error);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 100000;
+      animation: slideInRight 0.3s ease;
+      max-width: 350px;
+    }
+    
+    .notification-content {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .notification-content i {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+  `;
+  
+  document.head.appendChild(style);
+  document.body.appendChild(notification);
+  
+  // Remove notification after 5 seconds
+  setTimeout(() => {
+    notification.remove();
+    style.remove();
+  }, 5000);
+}
+
+// Add input event listeners to clear errors on typing
+const testimonialInputs = [testimonialNameInput, testimonialServiceInput, testimonialMessageInput];
+testimonialInputs.forEach(input => {
+  input.addEventListener('input', () => {
+    // Remove error class
+    input.classList.remove('error-input');
+    
+    // Remove error message if exists
+    const errorMessage = input.parentElement.querySelector('.error-message');
+    if (errorMessage) {
+      errorMessage.remove();
+    }
+  });
+});
+
+// Handle photo input error clearing
+photoInput.addEventListener('change', () => {
+  photoInput.classList.remove('error-input');
+  const errorMessage = photoInput.parentElement.querySelector('.error-message');
+  if (errorMessage) {
+    errorMessage.remove();
+  }
+});

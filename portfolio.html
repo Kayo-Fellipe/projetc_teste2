@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio - Kayo Fellipe</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/portfolio.css">
+  <link rel="icon" href="https://i.postimg.cc/R0SgyfHM/logo.png" type="image/png">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header id="header">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">KMF</a>
+      </div>
+      <nav id="nav">
+        <ul>
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#about">Sobre</a></li>
+          <li><a href="portfolio.html" class="active">Portfolio</a></li>
+          <li><a href="index.html#services">Serviços</a></li>
+          <li><a href="index.html#testimonials">Feedbacks</a></li>
+          <li><a href="index.html#contact">Contato</a></li>
+        </ul>
+        <div class="mobile-toggle" id="mobile-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section id="portfolio" class="portfolio section-padding">
+    <div class="container">
+      <div class="section-header">
+        <h2>Meu Portfolio</h2>
+        <div class="section-line"></div>
+      </div>
+      
+      <div class="portfolio-filter">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="photography">Fotografia</button>
+        <button class="filter-btn" data-filter="videography">Videografia</button>
+      </div>
+      
+      <div class="portfolio-grid">
+        <!-- Photography Projects -->
+        <div class="portfolio-item photography">
+          <div class="portfolio-img">
+            <img src="https://i.postimg.cc/CKZPMfGG/DSC-0088-VSCO.jpg" alt="Sessão de Retratos">
+            <div class="portfolio-overlay">
+              <div class="portfolio-info">
+                <h3>Sessão Leonardo & Monique</h3>
+                <p>Fotografia</p>
+                <button class="portfolio-link" data-project="sessao_leonardo_monique">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-item photography">
+          <div class="portfolio-img">
+            <img src="https://i.postimg.cc/mkGBy4Ln/DSC0019-VSCO.jpg" alt="Fotografia de Casamento">
+            <div class="portfolio-overlay">
+              <div class="portfolio-info">
+                <h3>Sessão Evandro & Pamella</h3>
+                <p>Fotografia</p>
+                <button class="portfolio-link" data-project="sessao_evandro_pamella">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-item photography">
+          <div class="portfolio-img">
+            <img src="https://i.postimg.cc/L8hcgtnJ/IMG-5564.jpg" alt="Fotografia de Casamento">
+            <div class="portfolio-overlay">
+              <div class="portfolio-info">
+                <h3>Sessão Ana Rodrigues</h3>
+                <p>Fotografia</p>
+                <button class="portfolio-link" data-project="sessao_ana_rodrigues">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Videography Projects -->
+        <div class="portfolio-item videography">
+          <div class="portfolio-img">
+            <img src="https://i.postimg.cc/cCmpwTRn/DSC00876.jpg" alt="Wedding Highlight">
+            <div class="portfolio-overlay">
+              <div class="portfolio-info">
+                <h3>Filmagem Ana Rodrigues</h3>
+                <p>Videografia</p>
+                <button class="portfolio-link" data-project="renascer">
+                  <i class="fas fa-play"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery Modal -->
+    <div id="gallery-modal" class="gallery-modal">
+      <div class="modal-content">
+        <button class="close-modal" id="close-modal">
+          <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="gallery-container">
+          <div class="gallery-header">
+            <h3 id="gallery-title"></h3>
+            <div class="gallery-counter">
+              <span id="current-index">1</span> / <span id="total-items">1</span>
+            </div>
+          </div>
+          
+          <div class="gallery-content">
+            <button class="gallery-nav prev" id="prev-btn">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="gallery-main" id="gallery-main">
+              <!-- Dynamic content will be inserted here -->
+            </div>
+            
+            <button class="gallery-nav next" id="next-btn">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+          
+          <div class="gallery-thumbnails" id="gallery-thumbnails">
+            <!-- Thumbnail navigation will be inserted here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <a href="index.html">KMF</a>
+          <p>Videomaker | Fotógrafo | Editor de vídeo</p>
+        </div>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/kayoofellipe/" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@kayoofellipe" class="social-icon"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.youtube.com/@kayoofellipe" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Kayo Portfolio. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="scroll-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <script type="module" src="js/script.js"></script>
+
+</body>
+</html>
