@@ -399,9 +399,15 @@
       appId: "1:641193524483:web:efc1e7e25bcb60820c3d36"
     };
     
-    const app = initializeApp(firebaseConfig);
-    window.db = getFirestore(app);
-    window.storage = getStorage(app);
+    try {
+      const app = initializeApp(firebaseConfig);
+      window.db = getFirestore(app);
+      window.storage = getStorage(app);
+      console.log('Firebase initialized successfully');
+    } catch (error) {
+      console.error('Error initializing Firebase:', error);
+      // Firebase will be unavailable, but the app will still work with email fallback
+    }
   </script>
 
   <script src="/js/testimonials.js"></script>
