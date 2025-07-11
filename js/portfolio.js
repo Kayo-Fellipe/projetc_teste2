@@ -175,8 +175,8 @@ const portfolioData = {
     type: "videography",
     items: [
       {
-        type: "youtube",
-        src: "nQm9rewdjBs",
+        type: "videography",
+        src: "https://res.cloudinary.com/dji3mbabe/video/upload/v1752256361/C0035_1_dx5gjc.mp4",
         thumbnail: "https://i.postimg.cc/cCmpwTRn/DSC00876.jpg"
       },
     ]
