@@ -52,7 +52,7 @@ button {
 
 .close-modal {
   position: absolute;
-  bottom: 600px;
+  top: -20px;
   bottom: 0;
   z-index: 10001;
   width: 40px;
