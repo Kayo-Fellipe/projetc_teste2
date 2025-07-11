@@ -215,7 +215,7 @@ class Portfolio {
 
   bindEvents() {
     // Portfolio links
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
+   const portfolioItems = document.querySelectorAll('.portfolio-item');
     portfolioItems.forEach(item => {
       item.addEventListener('click', (e) => {
         e.preventDefault();

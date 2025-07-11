@@ -18,12 +18,23 @@ body, html {
   padding: 1rem;
   box-sizing: border-box;
   margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-
+.modal-content {
+  background-color: #1a1a1a;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+  max-width: 400px;
+  width: 90%;
+  max-height: 90vh;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  animation: fadeIn 0.4s ease;
+  position: relative;
+  margin: 0 auto;
+  transform: translateY(0);
+}
 
 .modal-content h1 {
   margin-bottom: 0.5rem;
@@ -55,198 +66,6 @@ body, html {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-/* Testimonial Modal Styles */
-.testimonial-modal-content {
-  max-width: 600px;
-  width: 95%;
-  text-align: left;
-  max-height: 90vh;
-  overflow-y: auto;
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--color-dark-600);
-}
-
-.modal-header h2 {
-  margin: 0;
-  color: var(--color-light);
-  font-size: 1.8rem;
-}
-
-.close-testimonial-modal {
-  background: none;
-  border: none;
-  color: var(--color-light);
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 50%;
-  transition: var(--transition);
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.close-testimonial-modal:hover {
-  background-color: var(--color-dark-600);
-  color: var(--color-primary);
-}
-
-.testimonial-form .form-group {
-  margin-bottom: 1.5rem;
-}
-
-.testimonial-form label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: var(--color-light);
-  font-weight: 500;
-  font-size: 1rem;
-}
-
-.testimonial-form input,
-.testimonial-form select,
-.testimonial-form textarea {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: var(--color-dark-600);
-  border: 1px solid var(--color-dark-600);
-  border-radius: 8px;
-  color: var(--color-light);
-  font-family: var(--font-main);
-  font-size: 1rem;
-  transition: var(--transition);
-  box-sizing: border-box;
-}
-
-.testimonial-form input:focus,
-.testimonial-form select:focus,
-.testimonial-form textarea:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
-}
-
-.testimonial-form select {
-  cursor: pointer;
-}
-
-.testimonial-form textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-/* File Upload Styles */
-.file-upload-container {
-  position: relative;
-}
-
-.file-upload-container input[type="file"] {
-  position: absolute;
-  opacity: 0;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  z-index: 2;
-}
-
-.file-upload-display {
-  border: 2px dashed var(--color-dark-600);
-  border-radius: 8px;
-  padding: 2rem;
-  text-align: center;
-  transition: var(--transition);
-  position: relative;
-  background-color: var(--color-dark-700);
-}
-
-.file-upload-display:hover {
-  border-color: var(--color-primary);
-  background-color: var(--color-dark-600);
-}
-
-.file-upload-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--color-gray);
-}
-
-.file-upload-placeholder i {
-  font-size: 2rem;
-  color: var(--color-primary);
-}
-
-.photo-preview {
-  max-width: 150px;
-  max-height: 150px;
-  border-radius: 8px;
-  object-fit: cover;
-  margin: 0 auto;
-  display: block;
-}
-
-/* Form Actions */
-.form-actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-end;
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--color-dark-600);
-}
-
-.form-actions .btn {
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  min-width: 120px;
-}
-
-/* Add Testimonial Button Section */
-.add-testimonial-section {
-  text-align: center;
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--color-dark-600);
-}
-
-.add-testimonial-btn {
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: var(--transition);
-}
-
-.add-testimonial-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
-}
-
-/* Error States */
-.testimonial-form .error-input {
-  border-color: var(--color-error) !important;
-  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
-}
-
-.testimonial-form .error-message {
-  color: var(--color-error);
-  font-size: 0.85rem;
-  margin-top: 0.25rem;
-  margin-bottom: 0;
-}
-
 /* Base Styles */
 :root {
   /* Color System - Updated to new palette */
@@ -687,9 +506,48 @@ img {
   font-size: 0.9rem;
 }
 
+.portfolio-link {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: var(--color-light);
+}
 
+.portfolio-link:hover {
+  background-color: var(--color-primary-light);
+  color: var(--color-light);
+}
 
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(18, 18, 18, 0.9);
+}
 
+.modal-content {
+  position: relative;
+  margin: auto;
+  padding: 2rem;
+  width: 40%;
+  max-width: 900px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center; /* Centraliza o conteúdo */
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  color: #fff;
+}
 
 .check-icon svg {
   width: 120px;
@@ -698,8 +556,57 @@ img {
   margin: 0 auto 1rem auto;
 }
 
-/* Estilizar e aumentar o botão */
+.modal-content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+}
 
+/* Estilizar e aumentar o botão */
+#closeModal {
+  margin-top: 1.5rem;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background-color: #8A2BE2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#closeModal:hover {
+  background-color: #6e22c0;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: var(--color-light);
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+#modal-container {
+  width: 100%;
+  height: 100%;
+}
+
+#modal-container img {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+#modal-container iframe {
+  width: 100%;
+  height: 80vh;
+  border: none;
+}
 
 /* Services Section */
 .services-grid {
@@ -755,18 +662,18 @@ img {
 }
 
 .service-features li {
-  padding: var(--space-1) 0;
-  color: var(--color-light);
   position: relative;
-  padding-left: var(--space-3);
+  padding-left: 20px; /* Espaço para o ícone */
+  color: var(--color-light);
 }
 
 .service-features li::before {
- 
+  content: '→';
   color: var(--color-primary);
   position: absolute;
   left: 0;
-  
+  top: 0; /* Ajuste vertical se necessário */
+  font-size: 1rem;
 }
 
 /* Testimonials Section - New Design */
@@ -923,20 +830,6 @@ img {
     width: 45px;
     height: 45px;
     font-size: 1rem;
-  }
-
-  .testimonial-modal-content {
-    width: 95%;
-    margin: 1rem;
-    max-height: 85vh;
-  }
-
-  .form-actions {
-    flex-direction: column;
-  }
-
-  .form-actions .btn {
-    width: 100%;
   }
 }
 
