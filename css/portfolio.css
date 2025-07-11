@@ -9,8 +9,22 @@ button {
 
 /* Gallery Modal */
 
+.gallery-modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-
+.modal-content {
+  position: relative;
+  width: 95%;
+  max-width: 1000px;
+  max-height: 90vh;
+  background-color: var(--color-dark-800);
+  border-radius: 12px;
+  overflow: hidden;
+  animation: modalFadeIn 0.3s ease;
+}
 
 @keyframes modalFadeIn {
   from {
