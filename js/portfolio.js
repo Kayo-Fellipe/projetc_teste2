@@ -6,7 +6,7 @@ const portfolioData = {
     items: [
       {
         type: "image",
-        src: "https://res.cloudinary.com/dji3mbabe/image/upload/v1752256053/DSC_0059_VSCO_Original_msvggt.jpg",
+        src: "https://i.postimg.cc/CKZPMfGG/DSC-0088-VSCO.jpg",
         thumbnail: "https://i.postimg.cc/CKZPMfGG/DSC-0088-VSCO.jpg"
       },
       {
@@ -175,8 +175,8 @@ const portfolioData = {
     type: "videography",
     items: [
       {
-        type: "video",
-        src: "https://res.cloudinary.com/dji3mbabe/video/upload/v1752256361/C0035_1_dx5gjc.mp4",
+        type: "youtube",
+        src: "nQm9rewdjBs",
         thumbnail: "https://i.postimg.cc/cCmpwTRn/DSC00876.jpg"
       },
     ]
