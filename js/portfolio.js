@@ -180,7 +180,7 @@ const portfolioData = {
         thumbnail: "https://i.postimg.cc/cCmpwTRn/DSC00876.jpg"
       },
     ]
-  },
+  }
 };
 
 
