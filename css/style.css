@@ -703,18 +703,7 @@ img {
 
 
 
-/* Modal Styles */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(18, 18, 18, 0.9);
-}
+
 
 .check-icon svg {
   width: 120px;
@@ -724,50 +713,7 @@ img {
 }
 
 /* Estilizar e aumentar o botão */
-#closeModal {
-  margin-top: 1.5rem;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  background-color: #8A2BE2;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
 
-#closeModal:hover {
-  background-color: #6e22c0;
-}
-
-.close-modal {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: var(--color-light);
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-  z-index: 1001;
-}
-
-#modal-container {
-  width: 100%;
-  height: 100%;
-}
-
-#modal-container img {
-  width: 100%;
-  height: auto;
-  max-height: 80vh;
-  object-fit: contain;
-}
-
-#modal-container iframe {
-  width: 100%;
-  height: 80vh;
-  border: none;
-}
 
 /* Services Section */
 .services-grid {
