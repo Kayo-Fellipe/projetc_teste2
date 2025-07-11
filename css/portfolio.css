@@ -26,24 +26,17 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  padding: 10px;
-  box-sizing: border-box;
 }
 
 .modal-content {
   position: relative;
   width: 98%;
   max-width: 1200px;
-  max-height: none;
-  min-height: 95vh;
+  max-height: 95vh;
   background-color: transparent;
   border-radius: 0;
   overflow: visible;
   animation: modalFadeIn 0.3s ease;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
 }
 
 @keyframes modalFadeIn {
@@ -59,8 +52,8 @@ button {
 
 .close-modal {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 10px;
+  right: 10px;
   z-index: 10001;
   width: 40px;
   height: 40px;
@@ -80,10 +73,9 @@ button {
 
 .gallery-container {
   padding: 0;
-  min-height: 95vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  position: relative;
 }
 
 .gallery-header {
@@ -91,10 +83,9 @@ button {
   justify-content: space-between;
   align-items: center;
   margin-bottom: var(--space-3);
-  padding: var(--space-3) 60px var(--space-3) var(--space-4);
+  padding: var(--space-3) var(--space-4);
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 8px;
-  position: relative;
 }
 
 .gallery-header h3 {
@@ -115,7 +106,7 @@ button {
   align-items: center;
   margin-bottom: var(--space-3);
   flex: 1;
-  min-height: 400px;
+  min-height: 0;
 }
 
 .gallery-main {
@@ -123,28 +114,24 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 400px;
-  height: auto;
+  height: 70vh;
+  max-height: 70vh;
   background-color: transparent;
   position: relative;
-  padding: 20px 60px;
-  box-sizing: border-box;
 }
 
 .gallery-main img {
-  max-width: 100%;
+  max-width: calc(100% - 120px);
   max-height: 100%;
-  width: auto;
-  height: auto;
   object-fit: contain;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .gallery-main iframe {
-  width: 100%;
-  height: 400px;
-  min-height: 400px;
+  width: calc(100% - 120px);
+  height: 100%;
+  max-height: 500px;
   border: none;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
@@ -312,50 +299,27 @@ button {
     font-size: 2rem;
   }
 
-  .gallery-modal.active {
-    align-items: flex-start;
-    padding: 5px;
-  }
-
   .modal-content {
     width: 100%;
-    min-height: auto;
-    max-height: none;
+    max-height: 100vh;
   }
 
   .gallery-container {
     padding: 0;
-    min-height: auto;
-  }
-
-  .gallery-header {
-    padding: var(--space-2) 50px var(--space-2) var(--space-3);
-    margin-bottom: var(--space-2);
-  }
-
-  .close-modal {
-    top: 10px;
-    right: 10px;
-    width: 35px;
-    height: 35px;
-    font-size: 1rem;
   }
 
   .gallery-main {
-    min-height: 300px;
-    height: auto;
-    padding: 15px 50px;
+    height: 60vh;
+    max-height: 60vh;
   }
 
   .gallery-main img {
-    max-width: 100%;
-    max-height: 80vh;
+    max-width: calc(100% - 100px);
   }
 
   .gallery-main iframe {
-    width: 100%;
-    height: 300px;
-    min-height: 300px;
+    width: calc(100% - 100px);
+    max-height: 300px;
   }
 
   .gallery-nav {
@@ -365,11 +329,15 @@ button {
   }
 
   .gallery-nav.prev {
-    left: 8px;
+    left: 5px;
   }
 
   .gallery-nav.next {
-    right: 8px;
+    right: 5px;
+  }
+
+  .gallery-header {
+    padding: var(--space-2) var(--space-3);
   }
 
   .footer-content {
@@ -387,113 +355,23 @@ button {
   }
 }
 
-/* Modo paisagem em dispositivos móveis */
-@media (max-width: 768px) and (orientation: landscape) {
-  .gallery-modal.active {
-    align-items: flex-start;
-    padding: 5px;
-  }
-
-  .modal-content {
-    min-height: auto;
-    max-height: none;
-  }
-
-  .gallery-container {
-    min-height: auto;
-  }
-
-  .gallery-header {
-    padding: 10px 50px 10px 15px;
-    margin-bottom: 10px;
-  }
-
-  .gallery-header h3 {
-    font-size: 1.1rem;
-  }
-
-  .gallery-counter {
-    font-size: 0.9rem;
-  }
-
-  .close-modal {
-    top: 8px;
-    right: 8px;
-    width: 32px;
-    height: 32px;
-    font-size: 0.9rem;
-  }
-
-  .gallery-main {
-    min-height: 250px;
-    padding: 10px 45px;
-  }
-
-  .gallery-main img {
-    max-height: 60vh;
-  }
-
-  .gallery-main iframe {
-    height: 250px;
-    min-height: 250px;
-  }
-
-  .gallery-nav {
-    width: 35px;
-    height: 35px;
-    font-size: 0.9rem;
-  }
-
-  .gallery-nav.prev {
-    left: 5px;
-  }
-
-  .gallery-nav.next {
-    right: 5px;
-  }
-
-  .gallery-thumbnails {
-    padding: 10px 15px;
-  }
-
-  .thumbnail {
-    width: 45px;
-    height: 45px;
-  }
-}
-
 @media (max-width: 480px) {
   .portfolio-grid {
     grid-template-columns: 1fr;
   }
 
-  .gallery-header {
-    padding: var(--space-2) 45px var(--space-2) var(--space-2);
-  }
-
-  .close-modal {
-    top: 8px;
-    right: 8px;
-    width: 32px;
-    height: 32px;
-    font-size: 0.9rem;
-  }
-
   .gallery-main {
-    min-height: 280px;
-    height: auto;
-    padding: 12px 40px;
+    height: 50vh;
+    max-height: 50vh;
   }
 
   .gallery-main img {
-    max-width: 100%;
-    max-height: 70vh;
+    max-width: calc(100% - 80px);
   }
 
   .gallery-main iframe {
-    width: 100%;
-    height: 280px;
-    min-height: 280px;
+    width: calc(100% - 80px);
+    max-height: 250px;
   }
 
   .gallery-nav {
@@ -503,11 +381,11 @@ button {
   }
 
   .gallery-nav.prev {
-    left: 5px;
+    left: 2px;
   }
 
   .gallery-nav.next {
-    right: 5px;
+    right: 2px;
   }
 
   .gallery-thumbnails {
@@ -518,6 +396,10 @@ button {
   .thumbnail {
     width: 50px;
     height: 50px;
+  }
+
+  .gallery-header {
+    padding: var(--space-2);
   }
 
   .gallery-header h3 {
