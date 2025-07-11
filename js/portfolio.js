@@ -6,7 +6,7 @@ const portfolioData = {
     items: [
       {
         type: "image",
-        src: "https://i.postimg.cc/CKZPMfGG/DSC-0088-VSCO.jpg",
+        src: "https://res.cloudinary.com/dji3mbabe/image/upload/v1752256053/DSC_0059_VSCO_Original_msvggt.jpg",
         thumbnail: "https://i.postimg.cc/CKZPMfGG/DSC-0088-VSCO.jpg"
       },
       {
