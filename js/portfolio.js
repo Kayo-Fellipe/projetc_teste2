@@ -215,12 +215,14 @@ class Portfolio {
 
   bindEvents() {
     // Portfolio links
-    const portfolioLinks = document.querySelectorAll('.portfolio-link');
-    portfolioLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    portfolioItems.forEach(item => {
+      item.addEventListener('click', (e) => {
         e.preventDefault();
-        const projectId = link.getAttribute('data-project');
-        this.openGallery(projectId);
+        const projectId = item.getAttribute('data-project');
+        if (projectId) {
+          this.openGallery(projectId);
+        }
       });
     });
 
