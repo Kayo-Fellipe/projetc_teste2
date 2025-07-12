@@ -256,7 +256,7 @@ const portfolioData = {
       {
         type: "youtube",
         src: "_2SUEnHmTNg",
-        thumbnail: "https://i.postimg.cc/cCmpwTRn/DSC00876.jpg"
+        thumbnail: "https://i.postimg.cc/dQ8Tj714/DSC01249-Original.jpg"
       },
     ]
   },
