@@ -196,33 +196,33 @@ const portfolioData = {
       },
       {
         type: "image",
-        src: "https://i.postimg.cc/L6Y3S46P/DSC-0221-Original.jpg",
-        thumbnail: "https://i.postimg.cc/L6Y3S46P/DSC-0221-Original.jpg"
+        src: "https://i.postimg.cc/dQ8Tj714/DSC01249-Original.jpg",
+        thumbnail: "https://i.postimg.cc/dQ8Tj714/DSC01249-Original.jpg"
       },
       {
         type: "image",
-        src: "https://i.postimg.cc/sfnTy0Yk/IMG-5757.jpg",
-        thumbnail: "https://i.postimg.cc/sfnTy0Yk/IMG-5757.jpg"
+        src: "https://i.postimg.cc/BbcLSzyd/DSC-0131-Original.jpg",
+        thumbnail: "https://i.postimg.cc/BbcLSzyd/DSC-0131-Original.jpg"
       },
       {
         type: "image",
-        src: "https://i.postimg.cc/Jn7ctqzg/DSC00651.jpg",
-        thumbnail: "https://i.postimg.cc/Jn7ctqzg/DSC00651.jpg"
+        src: "https://i.postimg.cc/6qN4NKHr/DSC01182-Original.jpg",
+        thumbnail: "https://i.postimg.cc/6qN4NKHr/DSC01182-Original.jpg"
       },
       {
         type: "image",
-        src: "https://i.postimg.cc/QM3qZsGj/DSC00690.jpg",
-        thumbnail: "https://i.postimg.cc/QM3qZsGj/DSC00690.jpg"
+        src: "https://i.postimg.cc/tCvR3yhB/DSC-0130-Original.jpg",
+        thumbnail: "https://i.postimg.cc/tCvR3yhB/DSC-0130-Original.jpg"
       },
       {
         type: "image",
-        src: "https://i.postimg.cc/XJwS7nXx/DSC00653.jpg",
-        thumbnail: "https://i.postimg.cc/XJwS7nXx/DSC00653.jpg"
+        src: "https://i.postimg.cc/Ls1s47gN/DSC-0051-Original.jpg",
+        thumbnail: "https://i.postimg.cc/Ls1s47gN/DSC-0051-Original.jpg"
       },
       {
         type: "image",
-        src: "https://i.postimg.cc/1zrr9Tsw/DSC00596.jpg",
-        thumbnail: "https://i.postimg.cc/1zrr9Tsw/DSC00596.jpg"
+        src: "https://i.postimg.cc/52G0V1yX/DSC-0037-Original.jpg",
+        thumbnail: "https://i.postimg.cc/52G0V1yX/DSC-0037-Original.jpg"
       },
       {
         type: "image",
