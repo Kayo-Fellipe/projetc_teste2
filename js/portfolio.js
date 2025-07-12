@@ -170,7 +170,7 @@ const portfolioData = {
     ]
   },
 
-  sessao_ana_rodrigues: {
+  sessao_lays_nicolas: {
     title: "Sessão Lays & Nicolas",
     type: "photography",
     items: [
@@ -181,28 +181,28 @@ const portfolioData = {
       },
       {
         type: "image",
-        src: "https://i.postimg.cc/BQhWvYQW/DSC00467.jpg",
-        thumbnail: "https://i.postimg.cc/BQhWvYQW/DSC00467.jpg"
+        src: "https://i.postimg.cc/qqZwLzBJ/DSC01255-Original.jpg",
+        thumbnail: "https://i.postimg.cc/qqZwLzBJ/DSC01255-Original.jpg"
       },
       {
         type: "image",
-        src: "https://i.postimg.cc/HndGrFym/IMG-5562.jpg",
-        thumbnail: "https://i.postimg.cc/HndGrFym/IMG-5562.jpg"
+        src: "https://i.postimg.cc/MTmry6jH/DSC01251-Original.jpg",
+        thumbnail: "https://i.postimg.cc/MTmry6jH/DSC01251-Original.jpg"
       },
       {
         type: "image",
-        src: "https://i.postimg.cc/MKZ2q2wb/IMG-5563.jpg",
-        thumbnail: "https://i.postimg.cc/MKZ2q2wb/IMG-5563.jpg"
+        src: "https://i.postimg.cc/mrNSndZ6/IMG-5779.jpg",
+        thumbnail: "https://i.postimg.cc/mrNSndZ6/IMG-5779.jpg"
       },
       {
         type: "image",
-        src: "https://i.postimg.cc/MKgDtV9M/DSC00645.jpg",
-        thumbnail: "https://i.postimg.cc/MKgDtV9M/DSC00645.jpg"
+        src: "https://i.postimg.cc/L6Y3S46P/DSC-0221-Original.jpg",
+        thumbnail: "https://i.postimg.cc/L6Y3S46P/DSC-0221-Original.jpg"
       },
       {
         type: "image",
-        src: "https://i.postimg.cc/Z53LQnQf/IMG-5561.jpg",
-        thumbnail: "https://i.postimg.cc/Z53LQnQf/IMG-5561.jpg"
+        src: "https://i.postimg.cc/sfnTy0Yk/IMG-5757.jpg",
+        thumbnail: "https://i.postimg.cc/sfnTy0Yk/IMG-5757.jpg"
       },
       {
         type: "image",
