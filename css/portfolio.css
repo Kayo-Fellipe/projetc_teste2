@@ -136,6 +136,15 @@ button {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
+.gallery-main video {
+  width: calc(100% - 120px);
+  height: 100%;
+  max-height: 500px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  background-color: #000;
+}
+
 /* External Link Container */
 .external-link-container {
   display: flex;
@@ -320,6 +329,11 @@ button {
     max-height: 300px;
   }
 
+  .gallery-main video {
+    width: calc(100% - 100px);
+    max-height: 300px;
+  }
+
   .gallery-nav {
     width: 40px;
     height: 40px;
@@ -368,6 +382,11 @@ button {
   }
 
   .gallery-main iframe {
+    width: calc(100% - 80px);
+    max-height: 250px;
+  }
+
+  .gallery-main video {
     width: calc(100% - 80px);
     max-height: 250px;
   }
