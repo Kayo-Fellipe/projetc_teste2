@@ -308,8 +308,8 @@ const portfolioData = {
     ]
   },
 
-  filmagem_lays_nicolas: {
-    title: "Filmagem Lays & Nicolas",
+  filmagem_nicolas_lays: {
+    title: "Filmagem Nicolas & Lays",
     type: "videography",
     items: [
       {
