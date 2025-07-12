@@ -181,6 +181,18 @@ const portfolioData = {
       },
     ]
   },
+
+  filmagem_lays_nicolas: {
+    title: "Filmagem Lays & Nicolas",
+    type: "videography",
+    items: [
+      {
+        type: "youtube",
+        src: "2SUEnHmTNg",
+        thumbnail: "https://i.postimg.cc/cCmpwTRn/DSC00876.jpg"
+      },
+    ]
+  },
 };
 
 
