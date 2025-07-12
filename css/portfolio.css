@@ -216,7 +216,6 @@ button {
   overflow-x: auto;
   padding: var(--space-3) var(--space-4);
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.8);
   border-radius: 8px;
 }
 
