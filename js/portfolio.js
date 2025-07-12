@@ -263,6 +263,26 @@ const portfolioData = {
         type: "image",
         src: "https://i.postimg.cc/L5H4T8Cb/DSC01212-Original.jpg",
         thumbnail: "https://i.postimg.cc/L5H4T8Cb/DSC01212-Original.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/1XTTzWqr/DSC-0185-Original.jpg",
+        thumbnail: "https://i.postimg.cc/1XTTzWqr/DSC-0185-Original.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/hvHynfkC/DSC01205-Original.jpg",
+        thumbnail: "https://i.postimg.cc/hvHynfkC/DSC01205-Original.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/wv44WW0Y/DSC01241-Original.jpg",
+        thumbnail: "https://i.postimg.cc/wv44WW0Y/DSC01241-Original.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/Y9CyzcNx/DSC-0179-Original.jpg",
+        thumbnail: "https://i.postimg.cc/Y9CyzcNx/DSC-0179-Original.jpg"
       }
     ]
   },
