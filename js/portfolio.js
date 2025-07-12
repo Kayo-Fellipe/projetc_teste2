@@ -216,6 +216,11 @@ const portfolioData = {
       },
       {
         type: "image",
+        src: "https://i.postimg.cc/g2wz45sm/DSC-0029-Original.jpg",
+        thumbnail: "https://i.postimg.cc/g2wz45sm/DSC-0029-Original.jpg"
+      },
+      {
+        type: "image",
         src: "https://i.postimg.cc/Ls1s47gN/DSC-0051-Original.jpg",
         thumbnail: "https://i.postimg.cc/Ls1s47gN/DSC-0051-Original.jpg"
       },
@@ -226,13 +231,13 @@ const portfolioData = {
       },
       {
         type: "image",
-        src: "https://i.postimg.cc/63HVZv7Q/DSC00714.jpg",
-        thumbnail: "https://i.postimg.cc/63HVZv7Q/DSC00714.jpg"
+        src: "https://i.postimg.cc/NMvjK41Y/DSC-0116-Original.jpg",
+        thumbnail: "https://i.postimg.cc/NMvjK41Y/DSC-0116-Original.jpg"
       },
       {
         type: "image",
-        src: "https://i.postimg.cc/xCrV2Xjc/DSC00482.jpg",
-        thumbnail: "https://i.postimg.cc/xCrV2Xjc/DSC00482.jpg"
+        src: "https://i.postimg.cc/7YKhKSyM/DSC-0083-Original.jpg",
+        thumbnail: "https://i.postimg.cc/7YKhKSyM/DSC-0083-Original.jpg"
       }
     ]
   },
