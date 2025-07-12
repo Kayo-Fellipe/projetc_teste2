@@ -175,8 +175,8 @@ const portfolioData = {
     type: "videography",
     items: [
       {
-        type: "video",
-        src: "https://res.cloudinary.com/dji3mbabe/video/upload/v1752256361/C0035_1_dx5gjc.mp4",
+        type: "youtube",
+        src: "nQm9rewdjBs",
         thumbnail: "https://i.postimg.cc/cCmpwTRn/DSC00876.jpg"
       },
     ]
@@ -359,19 +359,11 @@ class Portfolio {
       galleryMain.appendChild(img);
     } 
     else if (item.type === 'video') {
-      const video = document.createElement('video');
-      video.src = item.src;
-      video.controls = true;
-      video.autoplay = false;
-      video.style.width = '100%';
-      video.style.height = '100%';
-      video.style.objectFit = 'contain';
-      video.addEventListener('loadeddata', () => {
-        video.style.opacity = '1';
-      });
-      video.style.opacity = '0';
-      video.style.transition = 'opacity 0.3s ease';
-      galleryMain.appendChild(video);
+      const iframe = document.createElement('iframe');
+      iframe.src = item.src;
+      iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+      iframe.allowFullscreen = true;
+      galleryMain.appendChild(iframe);
     }
     else if (item.type === 'youtube') {
       const iframe = document.createElement('iframe');
