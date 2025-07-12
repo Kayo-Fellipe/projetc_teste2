@@ -169,6 +169,73 @@ const portfolioData = {
       }
     ]
   },
+
+  sessao_ana_rodrigues: {
+    title: "Sessão Lays & Nicolas",
+    type: "photography",
+    items: [
+      {
+        type: "image",
+        src: "https://i.postimg.cc/TYYBJD06/DSC-0234-Original.jpg",
+        thumbnail: "https://i.postimg.cc/TYYBJD06/DSC-0234-Original.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/BQhWvYQW/DSC00467.jpg",
+        thumbnail: "https://i.postimg.cc/BQhWvYQW/DSC00467.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/HndGrFym/IMG-5562.jpg",
+        thumbnail: "https://i.postimg.cc/HndGrFym/IMG-5562.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/MKZ2q2wb/IMG-5563.jpg",
+        thumbnail: "https://i.postimg.cc/MKZ2q2wb/IMG-5563.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/MKgDtV9M/DSC00645.jpg",
+        thumbnail: "https://i.postimg.cc/MKgDtV9M/DSC00645.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/Z53LQnQf/IMG-5561.jpg",
+        thumbnail: "https://i.postimg.cc/Z53LQnQf/IMG-5561.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/Jn7ctqzg/DSC00651.jpg",
+        thumbnail: "https://i.postimg.cc/Jn7ctqzg/DSC00651.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/QM3qZsGj/DSC00690.jpg",
+        thumbnail: "https://i.postimg.cc/QM3qZsGj/DSC00690.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/XJwS7nXx/DSC00653.jpg",
+        thumbnail: "https://i.postimg.cc/XJwS7nXx/DSC00653.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/1zrr9Tsw/DSC00596.jpg",
+        thumbnail: "https://i.postimg.cc/1zrr9Tsw/DSC00596.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/63HVZv7Q/DSC00714.jpg",
+        thumbnail: "https://i.postimg.cc/63HVZv7Q/DSC00714.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/xCrV2Xjc/DSC00482.jpg",
+        thumbnail: "https://i.postimg.cc/xCrV2Xjc/DSC00482.jpg"
+      }
+    ]
+  },
   
   filmagem_anarodrigues: {
     title: "Filmagem Ana Rodrigues",
