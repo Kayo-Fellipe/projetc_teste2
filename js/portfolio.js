@@ -457,4 +457,12 @@ class Portfolio {
 // Initialize Portfolio when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   new Portfolio();
+}); prevBtn.disabled = this.currentIndex <= 0;
+    nextBtn.disabled = this.currentIndex >= this.currentProject.items.length - 1;
+  }
+}
+
+// Initialize Portfolio when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  new Portfolio();
 });
