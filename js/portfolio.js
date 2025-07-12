@@ -194,6 +194,11 @@ const portfolioData = {
         src: "https://i.postimg.cc/mrNSndZ6/IMG-5779.jpg",
         thumbnail: "https://i.postimg.cc/mrNSndZ6/IMG-5779.jpg"
       },
+            {
+        type: "image",
+        src: "https://i.postimg.cc/tCvR3yhB/DSC-0130-Original.jpg",
+        thumbnail: "https://i.postimg.cc/tCvR3yhB/DSC-0130-Original.jpg"
+      },
       {
         type: "image",
         src: "https://i.postimg.cc/dQ8Tj714/DSC01249-Original.jpg",
@@ -208,11 +213,6 @@ const portfolioData = {
         type: "image",
         src: "https://i.postimg.cc/6qN4NKHr/DSC01182-Original.jpg",
         thumbnail: "https://i.postimg.cc/6qN4NKHr/DSC01182-Original.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/tCvR3yhB/DSC-0130-Original.jpg",
-        thumbnail: "https://i.postimg.cc/tCvR3yhB/DSC-0130-Original.jpg"
       },
       {
         type: "image",
@@ -238,6 +238,16 @@ const portfolioData = {
         type: "image",
         src: "https://i.postimg.cc/7YKhKSyM/DSC-0083-Original.jpg",
         thumbnail: "https://i.postimg.cc/7YKhKSyM/DSC-0083-Original.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/SxwyPr18/DSC01203-Original.jpg",
+        thumbnail: "https://i.postimg.cc/SxwyPr18/DSC01203-Original.jpg"
+      },
+            {
+        type: "image",
+        src: "https://i.postimg.cc/SxwyPr18/DSC01203-Original.jpg",
+        thumbnail: "https://i.postimg.cc/SxwyPr18/DSC01203-Original.jpg"
       }
     ]
   },
