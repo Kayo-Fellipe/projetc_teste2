@@ -1,175 +1,5 @@
 // Portfolio Data - Define all projects and their galleries
 const portfolioData = {
-  sessao_leonardo_monique: {
-    title: "Sessão Leonardo & Monique",
-    type: "photography",
-    items: [
-      {
-        type: "image",
-        src: "https://i.postimg.cc/CKZPMfGG/DSC-0088-VSCO.jpg",
-        thumbnail: "https://i.postimg.cc/CKZPMfGG/DSC-0088-VSCO.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/VsXhbM34/DSC-0081-VSCO.jpg",
-        thumbnail: "https://i.postimg.cc/VsXhbM34/DSC-0081-VSCO.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/K88pVW4s/DSC-0058-VSCO-Original.jpg",
-        thumbnail: "https://i.postimg.cc/K88pVW4s/DSC-0058-VSCO-Original.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/fTKg8sW9/DSC-0059-VSCO-Original.jpg",
-        thumbnail: "https://i.postimg.cc/fTKg8sW9/DSC-0059-VSCO-Original.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/wBSW1T2S/DSC-0092-VSCO.jpg",
-        thumbnail: "https://i.postimg.cc/wBSW1T2S/DSC-0092-VSCO.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/fLm8mngk/DSC-0097-VSCO.jpg",
-        thumbnail: "https://i.postimg.cc/fLm8mngk/DSC-0097-VSCO.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/D0hBcjt6/DSC-0043-VSCO-VSCO.jpg",
-        thumbnail: "https://i.postimg.cc/D0hBcjt6/DSC-0043-VSCO-VSCO.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/L4kysS1b/DSC-0104-VSCO.jpg",
-        thumbnail: "https://i.postimg.cc/L4kysS1b/DSC-0104-VSCO.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/9QggjB7X/DSC-0017-VSCO-Original.jpg",
-        thumbnail: "https://i.postimg.cc/9QggjB7X/DSC-0017-VSCO-Original.jpg"
-      }
-    ]
-  },
-  
-  sessao_evandro_pamella: {
-    title: "Sessão Evandro & Pamella",
-    type: "photography",
-    items: [
-      {
-        type: "image",
-        src: "https://i.postimg.cc/mkGBy4Ln/DSC0019-VSCO.jpg",
-        thumbnail: "https://i.postimg.cc/mkGBy4Ln/DSC0019-VSCO.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/4dpTd06Q/DSC0007-VSCO.jpg",
-        thumbnail: "https://i.postimg.cc/4dpTd06Q/DSC0007-VSCO.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/sXW3WxrS/DSC0006-VSCO.jpg",
-        thumbnail: "https://i.postimg.cc/sXW3WxrS/DSC0006-VSCO.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/Xq36ygxS/DSC0027-VSCO.jpg",
-        thumbnail: "https://i.postimg.cc/Xq36ygxS/DSC0027-VSCO.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/kg59cfC7/Full-Size-Render-VSCO.jpg",
-        thumbnail: "https://i.postimg.cc/kg59cfC7/Full-Size-Render-VSCO.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/BvkqtDd4/DSC0040-VSCO.jpg",
-        thumbnail: "https://i.postimg.cc/BvkqtDd4/DSC0040-VSCO.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/rsCchHzw/DSC0046-VSCO.jpg",
-        thumbnail: "https://i.postimg.cc/rsCchHzw/DSC0046-VSCO.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/ryS8FDg2/DSC0050-VSCO.jpg",
-        thumbnail: "https://i.postimg.cc/ryS8FDg2/DSC0050-VSCO.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/3J1YmzPL/DSC0060-VSCO.jpg",
-        thumbnail: "https://i.postimg.cc/3J1YmzPL/DSC0060-VSCO.jpg"
-      }
-    ]
-  },
-  sessao_ana_rodrigues: {
-    title: "Sessão Ana Rodrigues",
-    type: "photography",
-    items: [
-      {
-        type: "image",
-        src: "https://i.postimg.cc/L8hcgtnJ/IMG-5564.jpg",
-        thumbnail: "https://i.postimg.cc/L8hcgtnJ/IMG-5564.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/BQhWvYQW/DSC00467.jpg",
-        thumbnail: "https://i.postimg.cc/BQhWvYQW/DSC00467.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/HndGrFym/IMG-5562.jpg",
-        thumbnail: "https://i.postimg.cc/HndGrFym/IMG-5562.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/MKZ2q2wb/IMG-5563.jpg",
-        thumbnail: "https://i.postimg.cc/MKZ2q2wb/IMG-5563.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/MKgDtV9M/DSC00645.jpg",
-        thumbnail: "https://i.postimg.cc/MKgDtV9M/DSC00645.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/Z53LQnQf/IMG-5561.jpg",
-        thumbnail: "https://i.postimg.cc/Z53LQnQf/IMG-5561.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/Jn7ctqzg/DSC00651.jpg",
-        thumbnail: "https://i.postimg.cc/Jn7ctqzg/DSC00651.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/QM3qZsGj/DSC00690.jpg",
-        thumbnail: "https://i.postimg.cc/QM3qZsGj/DSC00690.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/XJwS7nXx/DSC00653.jpg",
-        thumbnail: "https://i.postimg.cc/XJwS7nXx/DSC00653.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/1zrr9Tsw/DSC00596.jpg",
-        thumbnail: "https://i.postimg.cc/1zrr9Tsw/DSC00596.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/63HVZv7Q/DSC00714.jpg",
-        thumbnail: "https://i.postimg.cc/63HVZv7Q/DSC00714.jpg"
-      },
-      {
-        type: "image",
-        src: "https://i.postimg.cc/xCrV2Xjc/DSC00482.jpg",
-        thumbnail: "https://i.postimg.cc/xCrV2Xjc/DSC00482.jpg"
-      }
-    ]
-  },
-
   sessao_lays_nicolas: {
     title: "Sessão Lays & Nicolas",
     type: "photography",
@@ -276,26 +106,205 @@ const portfolioData = {
       },
       {
         type: "image",
+        src: "https://i.postimg.cc/Y9CyzcNx/DSC-0179-Original.jpg",
+        thumbnail: "https://i.postimg.cc/Y9CyzcNx/DSC-0179-Original.jpg"
+      },
+      {
+        type: "image",
         src: "https://i.postimg.cc/wv44WW0Y/DSC01241-Original.jpg",
         thumbnail: "https://i.postimg.cc/wv44WW0Y/DSC01241-Original.jpg"
       },
       {
         type: "image",
-        src: "https://i.postimg.cc/Y9CyzcNx/DSC-0179-Original.jpg",
-        thumbnail: "https://i.postimg.cc/Y9CyzcNx/DSC-0179-Original.jpg"
+        src: "https://i.postimg.cc/fRMFR03F/DSC-0199-Original.jpg",
+        thumbnail: "https://i.postimg.cc/fRMFR03F/DSC-0199-Original.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/3JXVhZwm/DSC-0239-Original.jpg",
+        thumbnail: "https://i.postimg.cc/3JXVhZwm/DSC-0239-Original.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/15h2bdyy/DSC-0256-Original.jpg",
+        thumbnail: "https://i.postimg.cc/15h2bdyy/DSC-0256-Original.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/8CtZ5K8f/IMG-5827.jpg",
+        thumbnail: "https://i.postimg.cc/8CtZ5K8f/IMG-5827.jpg"
+      }
+    ]
+  },
+
+  sessao_ana_rodrigues: {
+    title: "Sessão Ana Rodrigues",
+    type: "photography",
+    items: [
+      {
+        type: "image",
+        src: "https://i.postimg.cc/L8hcgtnJ/IMG-5564.jpg",
+        thumbnail: "https://i.postimg.cc/L8hcgtnJ/IMG-5564.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/BQhWvYQW/DSC00467.jpg",
+        thumbnail: "https://i.postimg.cc/BQhWvYQW/DSC00467.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/HndGrFym/IMG-5562.jpg",
+        thumbnail: "https://i.postimg.cc/HndGrFym/IMG-5562.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/MKZ2q2wb/IMG-5563.jpg",
+        thumbnail: "https://i.postimg.cc/MKZ2q2wb/IMG-5563.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/MKgDtV9M/DSC00645.jpg",
+        thumbnail: "https://i.postimg.cc/MKgDtV9M/DSC00645.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/Z53LQnQf/IMG-5561.jpg",
+        thumbnail: "https://i.postimg.cc/Z53LQnQf/IMG-5561.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/Jn7ctqzg/DSC00651.jpg",
+        thumbnail: "https://i.postimg.cc/Jn7ctqzg/DSC00651.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/QM3qZsGj/DSC00690.jpg",
+        thumbnail: "https://i.postimg.cc/QM3qZsGj/DSC00690.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/XJwS7nXx/DSC00653.jpg",
+        thumbnail: "https://i.postimg.cc/XJwS7nXx/DSC00653.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/1zrr9Tsw/DSC00596.jpg",
+        thumbnail: "https://i.postimg.cc/1zrr9Tsw/DSC00596.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/63HVZv7Q/DSC00714.jpg",
+        thumbnail: "https://i.postimg.cc/63HVZv7Q/DSC00714.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/xCrV2Xjc/DSC00482.jpg",
+        thumbnail: "https://i.postimg.cc/xCrV2Xjc/DSC00482.jpg"
+      }
+    ]
+  },
+
+  sessao_leonardo_monique: {
+    title: "Sessão Leonardo & Monique",
+    type: "photography",
+    items: [
+      {
+        type: "image",
+        src: "https://i.postimg.cc/CKZPMfGG/DSC-0088-VSCO.jpg",
+        thumbnail: "https://i.postimg.cc/CKZPMfGG/DSC-0088-VSCO.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/VsXhbM34/DSC-0081-VSCO.jpg",
+        thumbnail: "https://i.postimg.cc/VsXhbM34/DSC-0081-VSCO.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/K88pVW4s/DSC-0058-VSCO-Original.jpg",
+        thumbnail: "https://i.postimg.cc/K88pVW4s/DSC-0058-VSCO-Original.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/fTKg8sW9/DSC-0059-VSCO-Original.jpg",
+        thumbnail: "https://i.postimg.cc/fTKg8sW9/DSC-0059-VSCO-Original.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/wBSW1T2S/DSC-0092-VSCO.jpg",
+        thumbnail: "https://i.postimg.cc/wBSW1T2S/DSC-0092-VSCO.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/fLm8mngk/DSC-0097-VSCO.jpg",
+        thumbnail: "https://i.postimg.cc/fLm8mngk/DSC-0097-VSCO.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/D0hBcjt6/DSC-0043-VSCO-VSCO.jpg",
+        thumbnail: "https://i.postimg.cc/D0hBcjt6/DSC-0043-VSCO-VSCO.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/L4kysS1b/DSC-0104-VSCO.jpg",
+        thumbnail: "https://i.postimg.cc/L4kysS1b/DSC-0104-VSCO.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/9QggjB7X/DSC-0017-VSCO-Original.jpg",
+        thumbnail: "https://i.postimg.cc/9QggjB7X/DSC-0017-VSCO-Original.jpg"
       }
     ]
   },
   
-  filmagem_anarodrigues: {
-    title: "Filmagem Ana Rodrigues",
-    type: "videography",
+  sessao_evandro_pamella: {
+    title: "Sessão Evandro & Pamella",
+    type: "photography",
     items: [
       {
-        type: "youtube",
-        src: "nQm9rewdjBs",
-        thumbnail: "https://i.postimg.cc/cCmpwTRn/DSC00876.jpg"
+        type: "image",
+        src: "https://i.postimg.cc/mkGBy4Ln/DSC0019-VSCO.jpg",
+        thumbnail: "https://i.postimg.cc/mkGBy4Ln/DSC0019-VSCO.jpg"
       },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/4dpTd06Q/DSC0007-VSCO.jpg",
+        thumbnail: "https://i.postimg.cc/4dpTd06Q/DSC0007-VSCO.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/sXW3WxrS/DSC0006-VSCO.jpg",
+        thumbnail: "https://i.postimg.cc/sXW3WxrS/DSC0006-VSCO.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/Xq36ygxS/DSC0027-VSCO.jpg",
+        thumbnail: "https://i.postimg.cc/Xq36ygxS/DSC0027-VSCO.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/kg59cfC7/Full-Size-Render-VSCO.jpg",
+        thumbnail: "https://i.postimg.cc/kg59cfC7/Full-Size-Render-VSCO.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/BvkqtDd4/DSC0040-VSCO.jpg",
+        thumbnail: "https://i.postimg.cc/BvkqtDd4/DSC0040-VSCO.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/rsCchHzw/DSC0046-VSCO.jpg",
+        thumbnail: "https://i.postimg.cc/rsCchHzw/DSC0046-VSCO.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/ryS8FDg2/DSC0050-VSCO.jpg",
+        thumbnail: "https://i.postimg.cc/ryS8FDg2/DSC0050-VSCO.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/3J1YmzPL/DSC0060-VSCO.jpg",
+        thumbnail: "https://i.postimg.cc/3J1YmzPL/DSC0060-VSCO.jpg"
+      }
     ]
   },
 
@@ -307,6 +316,18 @@ const portfolioData = {
         type: "youtube",
         src: "_2SUEnHmTNg",
         thumbnail: "https://i.postimg.cc/dQ8Tj714/DSC01249-Original.jpg"
+      },
+    ]
+  },
+  
+  filmagem_anarodrigues: {
+    title: "Filmagem Ana Rodrigues",
+    type: "videography",
+    items: [
+      {
+        type: "youtube",
+        src: "nQm9rewdjBs",
+        thumbnail: "https://i.postimg.cc/cCmpwTRn/DSC00876.jpg"
       },
     ]
   },
