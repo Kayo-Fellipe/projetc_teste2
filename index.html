@@ -7,6 +7,7 @@
   <link rel="icon" href="https://i.postimg.cc/R0SgyfHM/logo.png" type="image/png">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/pre-orcamento.css">
 
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -23,6 +24,7 @@
           <li><a href="index.html#about">Sobre</a></li>
           <li><a href="portfolio.html">Portfolio</a></li>
           <li><a href="index.html#services">Serviços</a></li>
+          <li><a href="index.html#pre-orcamento">Pré-Orçamento</a></li>
           <li><a href="index.html#testimonials">Feedbacks</a></li>
           <li><a href="index.html#contact">Contato</a></li>
         </ul>
@@ -137,6 +139,170 @@
             <li>Vídeos para Redes Sociais</li>
             <li>Trilha Sonora & Legendas</li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pre-orcamento" class="pre-orcamento section-padding">
+    <div class="container">
+      <div class="section-header">
+        <h2>Pré-Orçamento</h2>
+        <div class="section-line"></div>
+      </div>
+      
+      <div class="orcamento-container">
+        <form id="orcamento-form" class="orcamento-form">
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="event-type">Tipo de Evento</label>
+              <select id="event-type" name="event-type" required>
+                <option value="">Selecione o tipo</option>
+                <option value="pessoal">Pessoal</option>
+                <option value="corporativo">Corporativo</option>
+                <option value="esportivo">Esportivo</option>
+                <option value="casamento">Casamento</option>
+                <option value="imobiliario">Imobiliário</option>
+                <option value="publicidade">Publicidade</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="event-location">Local do Evento</label>
+              <input type="text" id="event-location" name="event-location" placeholder="Cidade/Bairro" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="event-duration">Tempo de Evento</label>
+              <div class="range-group">
+                <div class="range-display">
+                  <span>Duração:</span>
+                  <span class="range-value" id="event-duration-display">4 horas</span>
+                </div>
+                <input type="range" id="event-duration" name="event-duration" min="1" max="12" value="4" step="1">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="editing-time">Tempo de Edição</label>
+              <div class="range-group">
+                <div class="range-display">
+                  <span>Edição:</span>
+                  <span class="range-value" id="editing-time-display">8 horas</span>
+                </div>
+                <input type="range" id="editing-time" name="editing-time" min="0" max="20" value="8" step="1">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group-full">
+            <label>Serviços Contratados</label>
+            <div class="checkbox-group">
+              <div class="checkbox-item">
+                <input type="checkbox" id="photography" name="services" value="photography">
+                <label for="photography">Fotografia</label>
+                <span class="price">R$ 50/h</span>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="videography" name="services" value="videography">
+                <label for="videography">Filmagem</label>
+                <span class="price">R$ 50/h</span>
+              </div>
+            </div>
+            <p style="color: var(--color-gray); font-size: 0.9rem; margin-top: var(--space-1);">
+              * Contratando os dois serviços: R$ 70/h
+            </p>
+          </div>
+
+          <div class="form-group-full">
+            <label>Tipo de Edição</label>
+            <div class="checkbox-group">
+              <div class="checkbox-item">
+                <input type="checkbox" id="lightroom" name="software" value="lightroom">
+                <label for="lightroom">Lightroom</label>
+                <span class="price">R$ 15</span>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="photoshop" name="software" value="photoshop">
+                <label for="photoshop">Photoshop</label>
+                <span class="price">R$ 30</span>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="premiere" name="software" value="premiere">
+                <label for="premiere">Premiere</label>
+                <span class="price">R$ 20</span>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="after-effects" name="software" value="afterEffects">
+                <label for="after-effects">After Effects</label>
+                <span class="price">R$ 50</span>
+              </div>
+            </div>
+            <p style="color: var(--color-gray); font-size: 0.9rem; margin-top: var(--space-1);">
+              * Edição com After Effects: R$ 70/h (ao invés de R$ 50/h)
+            </p>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="distance">Distância Total (ida e volta)</label>
+              <div class="range-group">
+                <div class="range-display">
+                  <span>Distância:</span>
+                  <span class="range-value" id="distance-display">50 km</span>
+                </div>
+                <input type="range" id="distance" name="distance" min="0" max="500" value="50" step="10">
+              </div>
+              <p style="color: var(--color-gray); font-size: 0.85rem; margin-top: var(--space-1);">
+                Cálculo: (km ÷ 8) × R$ 5,50
+              </p>
+            </div>
+            
+            <div class="form-group">
+              <label for="toll">Pedágio (se houver)</label>
+              <input type="number" id="toll" name="toll" placeholder="0,00" min="0" step="0.01">
+            </div>
+          </div>
+
+        </form>
+
+        <div id="calculation-result" class="calculation-result">
+          <div class="calculation-breakdown">
+            <div class="breakdown-item">
+              <h4>Trabalho no Evento</h4>
+              <div class="value" id="event-cost">R$ 0,00</div>
+            </div>
+            <div class="breakdown-item">
+              <h4>Edição</h4>
+              <div class="value" id="editing-cost">R$ 0,00</div>
+            </div>
+            <div class="breakdown-item">
+              <h4>Softwares</h4>
+              <div class="value" id="software-cost">R$ 0,00</div>
+            </div>
+            <div class="breakdown-item">
+              <h4>Deslocamento</h4>
+              <div class="value" id="transport-cost">R$ 0,00</div>
+            </div>
+            <div class="breakdown-item">
+              <h4>Pedágio</h4>
+              <div class="value" id="toll-cost">R$ 0,00</div>
+            </div>
+          </div>
+          
+          <div class="total-value" id="total-value">R$ 0,00</div>
+          
+          <p class="disclaimer">
+            Este valor é apenas uma estimativa. Vamos ajustar com você no atendimento personalizado.
+          </p>
+          
+          <a href="#contact" id="contact-orcamento-btn" class="contact-btn">
+            <i class="fab fa-whatsapp"></i>
+            Falar com o Kayo
+          </a>
         </div>
       </div>
     </div>
@@ -330,6 +496,7 @@
   </div>
 
   <script type="module" src="js/script.js"></script>
+  <script src="js/pre-orcamento.js"></script>
 
 </body>
 </html>

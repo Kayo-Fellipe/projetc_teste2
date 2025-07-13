@@ -5,6 +5,7 @@ import './portfolio.js';
 import './testimonials.js';
 import './form.js';
 import './thankyou.js';
+import './pre-orcamento.js';
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
