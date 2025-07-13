@@ -314,7 +314,7 @@ const portfolioData = {
     items: [
       {
         type: "youtube",
-        src: "https://t.me/c/2628580973/2",
+        src: "2628580973",
         thumbnail: "https://i.postimg.cc/dQ8Tj714/DSC01249-Original.jpg"
       },
     ]
