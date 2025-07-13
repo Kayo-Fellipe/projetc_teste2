@@ -313,10 +313,9 @@ const portfolioData = {
     type: "videography",
     items: [
       {
-        type: "external-link",
-        src: "https://t.me/c/2628580973/2",
+        type: "video",
+        src: "https://t.me/c/2628580973/2?embed=1",
         thumbnail: "https://i.postimg.cc/dQ8Tj714/DSC01249-Original.jpg",
-        title: "Ver Vídeo no Telegram"
       },
     ]
   },
@@ -511,9 +510,15 @@ class Portfolio {
     } 
     else if (item.type === 'video') {
       const iframe = document.createElement('iframe');
-      iframe.src = item.src;
+      if (item.src.includes('t.me')) {
+        // Para links do Telegram, usar embed
+        iframe.src = item.src.includes('?embed=1') ? item.src : item.src + '?embed=1';
+      } else {
+        iframe.src = item.src;
+      }
       iframe.allow = 'autoplay; fullscreen; picture-in-picture';
       iframe.allowFullscreen = true;
+      iframe.style.border = 'none';
       galleryMain.appendChild(iframe);
     }
     else if (item.type === 'youtube') {
