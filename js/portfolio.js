@@ -313,9 +313,10 @@ const portfolioData = {
     type: "videography",
     items: [
       {
-        type: "youtube",
-        src: "_2SUEnHmTNg",
-        thumbnail: "https://i.postimg.cc/dQ8Tj714/DSC01249-Original.jpg"
+        type: "external-link",
+        src: "https://t.me/c/2628580973/2",
+        thumbnail: "https://i.postimg.cc/dQ8Tj714/DSC01249-Original.jpg",
+        title: "Ver Vídeo no Telegram"
       },
     ]
   },
