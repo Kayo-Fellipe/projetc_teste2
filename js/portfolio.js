@@ -313,7 +313,7 @@ const portfolioData = {
     type: "videography",
     items: [
       {
-        type: "youtube",
+        type: "video",
         src: "2628580973/2",
         thumbnail: "https://i.postimg.cc/dQ8Tj714/DSC01249-Original.jpg"
       },
