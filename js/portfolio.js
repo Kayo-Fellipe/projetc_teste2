@@ -314,7 +314,7 @@ const portfolioData = {
     items: [
       {
         type: "video",
-        src: "https://t.me/c/2628580973/2?embed=1",
+        src: "https://t.me/midiaupload/2?embed=1",
         thumbnail: "https://i.postimg.cc/dQ8Tj714/DSC01249-Original.jpg",
       },
     ]
