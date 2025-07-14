@@ -621,7 +621,7 @@ button {
   /* Adjust header for mobile */
   .gallery-header {
     padding: var(--space-2) var(--space-3);
-    padding-bottom: 0.15rem;
+    top: -80;
   }
   
   .gallery-header h3 {
