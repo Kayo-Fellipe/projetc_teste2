@@ -390,7 +390,7 @@ button {
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-8);
   flex: 1;
   min-height: 0;
 }
