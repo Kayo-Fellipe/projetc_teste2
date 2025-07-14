@@ -942,6 +942,9 @@ textarea:-webkit-autofill {
 .footer {
   background-color: var(--color-dark-800);
   padding: var(--space-6) 0 var(--space-3);
+  margin-top: auto;
+  position: relative;
+  z-index: 1;
 }
 
 .footer-content {

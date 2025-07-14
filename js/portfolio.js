@@ -3,6 +3,8 @@ const portfolioData = {
   sessao_lays_nicolas: {
     title: "Sessão Lays & Nicolas",
     type: "photography",
+    date: "2024-12-15",
+    category: "Ensaios",
     items: [
       {
         type: "image",
@@ -140,6 +142,8 @@ const portfolioData = {
   sessao_ana_rodrigues: {
     title: "Sessão Ana Rodrigues",
     type: "photography",
+    date: "2024-12-10",
+    category: "Ensaios",
     items: [
       {
         type: "image",
@@ -207,6 +211,8 @@ const portfolioData = {
   sessao_leonardo_monique: {
     title: "Sessão Leonardo & Monique",
     type: "photography",
+    date: "2024-11-20",
+    category: "Ensaios",
     items: [
       {
         type: "image",
@@ -259,6 +265,8 @@ const portfolioData = {
   sessao_evandro_pamella: {
     title: "Sessão Evandro & Pamella",
     type: "photography",
+    date: "2024-10-15",
+    category: "Ensaios",
     items: [
       {
         type: "image",
@@ -311,6 +319,8 @@ const portfolioData = {
   filmagem_nicolas_lays: {
     title: "Filmagem Nicolas & Lays",
     type: "videography",
+    date: "2024-12-15",
+    category: "Ensaios",
     items: [
       {
         type: "youtube",
@@ -323,6 +333,8 @@ const portfolioData = {
   filmagem_anarodrigues: {
     title: "Filmagem Ana Rodrigues",
     type: "videography",
+    date: "2024-12-05",
+    category: "Ensaios",
     items: [
       {
         type: "youtube",
@@ -355,12 +367,18 @@ class Portfolio {
   constructor() {
     this.currentProject = null;
     this.currentIndex = 0;
+    this.currentFilter = 'all';
+    this.currentSort = 'newest';
+    this.portfolioItems = [];
     this.init();
   }
 
   init() {
+    this.portfolioItems = Array.from(document.querySelectorAll('.portfolio-item'));
     this.bindEvents();
     this.setupFiltering();
+    this.setupSorting();
+    this.updateStats();
   }
 
   bindEvents() {
@@ -413,34 +431,163 @@ class Portfolio {
 
   setupFiltering() {
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
 
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
+        // Show loading
+        this.showLoading();
+        
         // Update active button
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
         // Filter items
-        const filter = btn.getAttribute('data-filter');
+        this.currentFilter = btn.getAttribute('data-filter');
         
-        portfolioItems.forEach(item => {
-          if (filter === 'all' || item.classList.contains(filter)) {
-            item.style.display = 'block';
-            setTimeout(() => {
-              item.style.opacity = '1';
-              item.style.transform = 'translateY(0)';
-            }, 10);
-          } else {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-              item.style.display = 'none';
-            }, 300);
-          }
-        });
+        // Apply filter with delay for smooth animation
+        setTimeout(() => {
+          this.applyFilters();
+          this.hideLoading();
+        }, 300);
       });
     });
+  }
+  
+  setupSorting() {
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) {
+      sortSelect.addEventListener('change', (e) => {
+        this.showLoading();
+        this.currentSort = e.target.value;
+        
+        setTimeout(() => {
+          this.applySorting();
+          this.hideLoading();
+        }, 300);
+      });
+    }
+  }
+  
+  applyFilters() {
+    let visibleCount = 0;
+    
+    this.portfolioItems.forEach(item => {
+      const shouldShow = this.currentFilter === 'all' || item.classList.contains(this.currentFilter);
+      
+      item.classList.add('filtering');
+      
+      if (shouldShow) {
+        item.classList.remove('hide');
+        item.classList.add('show');
+        item.style.display = 'block';
+        visibleCount++;
+      } else {
+        item.classList.remove('show');
+        item.classList.add('hide');
+        setTimeout(() => {
+          if (item.classList.contains('hide')) {
+            item.style.display = 'none';
+          }
+        }, 400);
+      }
+    });
+    
+    // Update stats
+    this.updateStats(visibleCount);
+    
+    // Show empty state if no items visible
+    this.toggleEmptyState(visibleCount === 0);
+    
+    // Apply current sorting to visible items
+    if (visibleCount > 0) {
+      this.applySorting();
+    }
+  }
+  
+  applySorting() {
+    const visibleItems = this.portfolioItems.filter(item => 
+      !item.classList.contains('hide') && item.style.display !== 'none'
+    );
+    
+    // Get project data for sorting
+    const itemsWithData = visibleItems.map(item => {
+      const projectId = item.getAttribute('data-project');
+      const projectData = portfolioData[projectId];
+      return {
+        element: item,
+        data: projectData,
+        projectId
+      };
+    });
+    
+    // Sort based on current sort option
+    itemsWithData.sort((a, b) => {
+      switch (this.currentSort) {
+        case 'newest':
+          return new Date(b.data.date) - new Date(a.data.date);
+        case 'oldest':
+          return new Date(a.data.date) - new Date(b.data.date);
+        case 'name-asc':
+          return a.data.title.localeCompare(b.data.title);
+        case 'name-desc':
+          return b.data.title.localeCompare(a.data.title);
+        case 'type':
+          return a.data.type.localeCompare(b.data.type);
+        default:
+          return 0;
+      }
+    });
+    
+    // Reorder elements in DOM
+    const portfolioGrid = document.querySelector('.portfolio-grid');
+    itemsWithData.forEach((item, index) => {
+      portfolioGrid.appendChild(item.element);
+      // Add staggered animation delay
+      item.element.style.animationDelay = `${index * 0.1}s`;
+    });
+  }
+  
+  updateStats(visibleCount = null) {
+    const totalCount = this.portfolioItems.length;
+    const visible = visibleCount !== null ? visibleCount : this.portfolioItems.filter(item => 
+      !item.classList.contains('hide') && item.style.display !== 'none'
+    ).length;
+    
+    const visibleCountEl = document.getElementById('visible-count');
+    const totalCountEl = document.getElementById('total-count');
+    
+    if (visibleCountEl) visibleCountEl.textContent = visible;
+    if (totalCountEl) totalCountEl.textContent = totalCount;
+  }
+  
+  showLoading() {
+    const loading = document.getElementById('portfolio-loading');
+    const grid = document.querySelector('.portfolio-grid');
+    const empty = document.getElementById('portfolio-empty');
+    
+    if (loading) loading.style.display = 'block';
+    if (grid) grid.style.opacity = '0.5';
+    if (empty) empty.style.display = 'none';
+  }
+  
+  hideLoading() {
+    const loading = document.getElementById('portfolio-loading');
+    const grid = document.querySelector('.portfolio-grid');
+    
+    if (loading) loading.style.display = 'none';
+    if (grid) grid.style.opacity = '1';
+  }
+  
+  toggleEmptyState(show) {
+    const empty = document.getElementById('portfolio-empty');
+    const grid = document.querySelector('.portfolio-grid');
+    
+    if (empty) {
+      empty.style.display = show ? 'block' : 'none';
+    }
+    if (grid) {
+      grid.style.display = show ? 'none' : 'grid';
+    }
   }
 
   openGallery(projectId) {

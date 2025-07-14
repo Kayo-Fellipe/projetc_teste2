@@ -42,10 +42,33 @@
         <div class="section-line"></div>
       </div>
       
-      <div class="portfolio-filter">
-        <button class="filter-btn active" data-filter="all">Todos</button>
-        <button class="filter-btn" data-filter="photography">Fotografia</button>
-        <button class="filter-btn" data-filter="videography">Videografia</button>
+      <div class="portfolio-controls">
+        <div class="filter-row">
+          <div class="filter-group">
+            <span class="filter-label">Tipo</span>
+            <div class="filter-buttons">
+              <button class="filter-btn active" data-filter="all">Todos</button>
+              <button class="filter-btn" data-filter="photography">Fotografia</button>
+              <button class="filter-btn" data-filter="videography">Videografia</button>
+            </div>
+          </div>
+          
+          <div class="filter-group">
+            <span class="filter-label">Ordenar por</span>
+            <select class="sort-select" id="sort-select">
+              <option value="newest">Mais Recentes</option>
+              <option value="oldest">Mais Antigos</option>
+              <option value="name-asc">Nome (A-Z)</option>
+              <option value="name-desc">Nome (Z-A)</option>
+              <option value="type">Por Tipo</option>
+            </select>
+          </div>
+          
+          <div class="portfolio-stats">
+            <i class="fas fa-images"></i>
+            <span>Mostrando <span class="stats-count" id="visible-count">6</span> de <span class="stats-count" id="total-count">6</span> projetos</span>
+          </div>
+        </div>
       </div>
       
       <div class="portfolio-grid">
@@ -64,6 +87,13 @@
               </div>
             </div>
           </div>
+          <div class="portfolio-meta">
+            <div class="portfolio-date">
+              <i class="fas fa-calendar"></i>
+              <span>Dezembro 2024</span>
+            </div>
+            <div class="portfolio-type">Fotografia</div>
+          </div>
         </div>
         
         <div class="portfolio-item photography" data-project="sessao_ana_rodrigues">
@@ -78,6 +108,13 @@
                 </button>
               </div>
             </div>
+          </div>
+          <div class="portfolio-meta">
+            <div class="portfolio-date">
+              <i class="fas fa-calendar"></i>
+              <span>Dezembro 2024</span>
+            </div>
+            <div class="portfolio-type">Fotografia</div>
           </div>
         </div>
 
@@ -94,6 +131,13 @@
               </div>
             </div>
           </div>
+          <div class="portfolio-meta">
+            <div class="portfolio-date">
+              <i class="fas fa-calendar"></i>
+              <span>Novembro 2024</span>
+            </div>
+            <div class="portfolio-type">Fotografia</div>
+          </div>
         </div>
         
         <div class="portfolio-item photography" data-project="sessao_evandro_pamella">
@@ -108,6 +152,13 @@
                 </button>
               </div>
             </div>
+          </div>
+          <div class="portfolio-meta">
+            <div class="portfolio-date">
+              <i class="fas fa-calendar"></i>
+              <span>Outubro 2024</span>
+            </div>
+            <div class="portfolio-type">Fotografia</div>
           </div>
         </div>
         
@@ -125,6 +176,13 @@
               </div>
             </div>
           </div>
+          <div class="portfolio-meta">
+            <div class="portfolio-date">
+              <i class="fas fa-calendar"></i>
+              <span>Dezembro 2024</span>
+            </div>
+            <div class="portfolio-type">Videografia</div>
+          </div>
         </div>
 
         <div class="portfolio-item videography" data-project="filmagem_anarodrigues">
@@ -140,8 +198,28 @@
               </div>
             </div>
           </div>
+          <div class="portfolio-meta">
+            <div class="portfolio-date">
+              <i class="fas fa-calendar"></i>
+              <span>Dezembro 2024</span>
+            </div>
+            <div class="portfolio-type">Videografia</div>
+          </div>
         </div>
         
+      </div>
+      
+      <!-- Loading State -->
+      <div class="portfolio-loading" id="portfolio-loading">
+        <div class="loading-spinner"></div>
+        <p>Carregando projetos...</p>
+      </div>
+      
+      <!-- Empty State -->
+      <div class="portfolio-empty" id="portfolio-empty">
+        <i class="fas fa-search"></i>
+        <h3>Nenhum projeto encontrado</h3>
+        <p>Tente ajustar os filtros para ver mais projetos</p>
       </div>
     </div>
 
