@@ -619,9 +619,7 @@ button {
   }
   
   /* Adjust header for mobile */
-  .gallery-header {
-    padding: var(--space-2) var(--space-3);
-  }
+
   
   .gallery-header h3 {
     font-size: 1.2rem;
