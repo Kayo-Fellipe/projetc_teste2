@@ -712,6 +712,10 @@ button {
     font-size: 0.8rem;
     padding: 6px 12px;
   }
+
+  .gallery-content{
+    margin-bottom: var(--space-1);
+  }
 }
 
 /* Animation for portfolio items */
