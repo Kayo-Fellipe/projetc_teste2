@@ -590,8 +590,8 @@ button {
   
   /* Full screen content on mobile */
   .gallery-main {
-    height: 80vh;
-    max-height: 80vh;
+    height: 30vh;
+    max-height: 30vh;
   }
   
   .gallery-main img {
@@ -630,7 +630,7 @@ button {
   /* Adjust thumbnails for mobile */
   .gallery-thumbnails {
     justify-content: flex-start;
-    padding: var(--space-8);
+    padding: var(--space-1);
   }
   
   .thumbnail {
