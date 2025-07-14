@@ -597,7 +597,7 @@ button {
   .gallery-main img {
     max-width: 95%;
     max-height: 95%;
-    margin: 100px 0px;
+    margin: -100px 0px;
   }
   
   .gallery-main iframe {
