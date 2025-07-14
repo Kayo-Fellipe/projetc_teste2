@@ -390,7 +390,7 @@ button {
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-3);
   flex: 1;
   min-height: 0;
 }
@@ -630,7 +630,7 @@ button {
   /* Adjust thumbnails for mobile */
   .gallery-thumbnails {
     justify-content: flex-start;
-    padding: var(--space-1);
+    padding: var(--space-2);
   }
   
   .thumbnail {
