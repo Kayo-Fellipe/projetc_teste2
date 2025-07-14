@@ -620,7 +620,7 @@ button {
   
   /* Adjust header for mobile */
   .gallery-header {
-    padding: 0.05rem 1rem 1rem 1rem;
+    padding: 1rem 1rem 0.05rem 1rem;
 
   }
   
