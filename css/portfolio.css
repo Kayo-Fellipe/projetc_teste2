@@ -590,8 +590,8 @@ button {
   
   /* Full screen content on mobile */
   .gallery-main {
-    height: 30vh;
-    max-height: 30vh;
+    height: 80vh;
+    max-height: 80vh;
   }
   
   .gallery-main img {
