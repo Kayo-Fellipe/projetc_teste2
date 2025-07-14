@@ -404,6 +404,7 @@ button {
   max-height: 70vh;
   background-color: transparent;
   position: relative;
+  touch-action: pan-y;
 }
 
 .gallery-main img {
@@ -412,6 +413,11 @@ button {
   object-fit: contain;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .gallery-main iframe {
@@ -471,6 +477,40 @@ button {
 .gallery-nav:disabled:hover {
   background-color: rgba(0, 0, 0, 0.8);
   border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Swipe Indicator for Mobile */
+.swipe-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--color-light);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  z-index: 15;
+  animation: swipeHint 2s infinite;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.swipe-indicator i {
+  animation: swipeArrow 1.5s infinite;
+}
+
+@keyframes swipeHint {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+@keyframes swipeArrow {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
 }
 
 .gallery-thumbnails {
@@ -536,7 +576,69 @@ button {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
-/* Responsive Design */
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  /* Hide navigation arrows on mobile */
+  .gallery-nav {
+    display: none !important;
+  }
+  
+  /* Show swipe indicator on mobile */
+  .swipe-indicator {
+    display: flex !important;
+  }
+  
+  /* Full screen content on mobile */
+  .gallery-main {
+    height: 80vh;
+    max-height: 80vh;
+  }
+  
+  .gallery-main img {
+    max-width: 95%;
+    max-height: 95%;
+  }
+  
+  .gallery-main iframe {
+    width: 95%;
+    max-height: 60vh;
+  }
+  
+  .gallery-main video {
+    width: 95%;
+    max-height: 60vh;
+  }
+  
+  /* Adjust close button for mobile */
+  .close-modal {
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  /* Adjust header for mobile */
+  .gallery-header {
+    padding: var(--space-2) var(--space-3);
+  }
+  
+  .gallery-header h3 {
+    font-size: 1.2rem;
+  }
+  
+  /* Adjust thumbnails for mobile */
+  .gallery-thumbnails {
+    justify-content: flex-start;
+    padding: var(--space-2);
+  }
+  
+  .thumbnail {
+    width: 50px;
+    height: 50px;
+  }
+}
+
 @media (max-width: 1024px) {
   .portfolio-grid {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -589,47 +691,6 @@ button {
   .gallery-container {
     padding: 0;
   }
-
-  .gallery-main {
-    height: 60vh;
-    max-height: 60vh;
-  }
-
-  .gallery-main img {
-    max-width: calc(100% - 100px);
-  }
-
-  .gallery-main iframe {
-    width: calc(100% - 100px);
-    max-height: 300px;
-  }
-
-  .gallery-main video {
-    width: calc(100% - 100px);
-    max-height: 300px;
-  }
-
-  .gallery-nav {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-  }
-
-  .gallery-nav.prev {
-    left: 5px;
-  }
-
-  .gallery-nav.next {
-    right: 5px;
-  }
-
-  .gallery-header {
-    padding: var(--space-2) var(--space-3);
-  }
-
-  .gallery-thumbnails {
-    padding: var(--space-2) var(--space-3);
-  }
 }
 
 @media (max-width: 480px) {
@@ -642,54 +703,14 @@ button {
   }
 
   .gallery-main {
-    height: 50vh;
-    max-height: 50vh;
+    height: 75vh;
+    max-height: 75vh;
   }
 
-  .gallery-main img {
-    max-width: calc(100% - 80px);
-  }
-
-  .gallery-main iframe {
-    width: calc(100% - 80px);
-    max-height: 250px;
-  }
-
-  .gallery-main video {
-    width: calc(100% - 80px);
-    max-height: 250px;
-  }
-
-  .gallery-nav {
-    width: 35px;
-    height: 35px;
-    font-size: 0.9rem;
-  }
-
-  .gallery-nav.prev {
-    left: 2px;
-  }
-
-  .gallery-nav.next {
-    right: 2px;
-  }
-
-  .gallery-thumbnails {
-    justify-content: flex-start;
-    padding: var(--space-2);
-  }
-
-  .thumbnail {
-    width: 50px;
-    height: 50px;
-  }
-
-  .gallery-header {
-    padding: var(--space-2);
-  }
-
-  .gallery-header h3 {
-    font-size: 1.2rem;
+  .swipe-indicator {
+    bottom: 10px;
+    font-size: 0.8rem;
+    padding: 6px 12px;
   }
 }
 
@@ -731,4 +752,19 @@ button {
   opacity: 1;
   transform: scale(1) translateY(0);
   pointer-events: auto;
+}
+
+/* Swipe Animation States */
+.gallery-main.swiping img {
+  transition: none;
+}
+
+.gallery-main img.swipe-left {
+  transform: translateX(-20px);
+  opacity: 0.7;
+}
+
+.gallery-main img.swipe-right {
+  transform: translateX(20px);
+  opacity: 0.7;
 }

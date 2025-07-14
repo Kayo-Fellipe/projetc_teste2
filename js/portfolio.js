@@ -427,6 +427,157 @@ class Portfolio {
         }
       }
     });
+
+    // Touch/Swipe functionality for mobile
+    this.setupTouchNavigation();
+  }
+
+  setupTouchNavigation() {
+    const galleryMain = document.getElementById('gallery-main');
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
+    let isSwiping = false;
+    let swipeIndicatorShown = false;
+
+    // Touch events
+    galleryMain.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+      isSwiping = false;
+      
+      // Hide swipe indicator after first touch
+      if (!swipeIndicatorShown) {
+        const indicator = document.querySelector('.swipe-indicator');
+        if (indicator) {
+          indicator.style.display = 'none';
+          swipeIndicatorShown = true;
+        }
+      }
+    });
+
+    galleryMain.addEventListener('touchmove', (e) => {
+      if (!touchStartX) return;
+      
+      const currentX = e.changedTouches[0].screenX;
+      const currentY = e.changedTouches[0].screenY;
+      const diffX = Math.abs(currentX - touchStartX);
+      const diffY = Math.abs(currentY - touchStartY);
+      
+      // Only handle horizontal swipes (not vertical scrolling)
+      if (diffX > diffY && diffX > 10) {
+        e.preventDefault();
+        isSwiping = true;
+        
+        // Add visual feedback
+        const img = galleryMain.querySelector('img');
+        if (img) {
+          galleryMain.classList.add('swiping');
+          const direction = currentX > touchStartX ? 'right' : 'left';
+          img.classList.remove('swipe-left', 'swipe-right');
+          img.classList.add(`swipe-${direction}`);
+        }
+      }
+    });
+
+    galleryMain.addEventListener('touchend', (e) => {
+      if (!isSwiping) return;
+      
+      touchEndX = e.changedTouches[0].screenX;
+      touchEndY = e.changedTouches[0].screenY;
+      
+      // Reset visual feedback
+      const img = galleryMain.querySelector('img');
+      if (img) {
+        galleryMain.classList.remove('swiping');
+        img.classList.remove('swipe-left', 'swipe-right');
+      }
+      
+      this.handleSwipe();
+      
+      // Reset touch coordinates
+      touchStartX = 0;
+      touchEndX = 0;
+      touchStartY = 0;
+      touchEndY = 0;
+      isSwiping = false;
+    });
+
+    // Mouse events for desktop testing
+    let mouseStartX = 0;
+    let isMouseSwiping = false;
+
+    galleryMain.addEventListener('mousedown', (e) => {
+      mouseStartX = e.clientX;
+      isMouseSwiping = true;
+      e.preventDefault();
+    });
+
+    galleryMain.addEventListener('mousemove', (e) => {
+      if (!isMouseSwiping) return;
+      
+      const currentX = e.clientX;
+      const diffX = Math.abs(currentX - mouseStartX);
+      
+      if (diffX > 10) {
+        const img = galleryMain.querySelector('img');
+        if (img) {
+          galleryMain.classList.add('swiping');
+          const direction = currentX > mouseStartX ? 'right' : 'left';
+          img.classList.remove('swipe-left', 'swipe-right');
+          img.classList.add(`swipe-${direction}`);
+        }
+      }
+    });
+
+    galleryMain.addEventListener('mouseup', (e) => {
+      if (!isMouseSwiping) return;
+      
+      const mouseEndX = e.clientX;
+      const diffX = mouseEndX - mouseStartX;
+      
+      // Reset visual feedback
+      const img = galleryMain.querySelector('img');
+      if (img) {
+        galleryMain.classList.remove('swiping');
+        img.classList.remove('swipe-left', 'swipe-right');
+      }
+      
+      // Handle swipe if significant movement
+      if (Math.abs(diffX) > 50) {
+        if (diffX > 0) {
+          this.previousItem();
+        } else {
+          this.nextItem();
+        }
+      }
+      
+      isMouseSwiping = false;
+      mouseStartX = 0;
+    });
+
+    // Prevent context menu on long press
+    galleryMain.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+    });
+  }
+
+  handleSwipe() {
+    const swipeThreshold = 50;
+    const diffX = touchEndX - touchStartX;
+    const diffY = Math.abs(touchEndY - touchStartY);
+    
+    // Only handle horizontal swipes
+    if (Math.abs(diffX) > swipeThreshold && Math.abs(diffX) > diffY) {
+      if (diffX > 0) {
+        // Swipe right, show previous item
+        this.previousItem();
+      } else {
+        // Swipe left, show next item
+        this.nextItem();
+      }
+    }
   }
 
   setupFiltering() {
