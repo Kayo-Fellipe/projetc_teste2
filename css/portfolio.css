@@ -714,7 +714,7 @@ button {
   }
 
   .gallery-content{
-    margin-top: var(--space-1);
+    margin-top: -1rem;
   }
 }
 
