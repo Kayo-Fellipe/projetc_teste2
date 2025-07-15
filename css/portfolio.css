@@ -693,18 +693,18 @@ button {
 @media (max-width: 480px) {
   .gallery-container {
     height: 100vh;
-    max-height: 80vh;
+    max-height: 75vh;
   }
 
   .gallery-main img {
     max-width: 95%;
     max-height: 95%;
-    margin-bottom: -150px;
+    margin-bottom: -10px;
   }
 
    .gallery-header {
-    margin-bottom: -170px;
-    margin-top: 50px;
+    margin-bottom: -100px;
+    margin-top: 10px;
   }
   
   .gallery-main {
@@ -824,3 +824,4 @@ button {
   transform: translateX(20px);
   opacity: 0.7;
 }
+
