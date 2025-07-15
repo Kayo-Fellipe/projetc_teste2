@@ -373,7 +373,6 @@ button {
   padding: var(--space-3) var(--space-4);
   border-radius: 8px;
   flex-shrink: 0;
-  background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
 }
 
@@ -528,7 +527,6 @@ button {
   justify-content: center;
   border-radius: 8px;
   flex-shrink: 0;
-  background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
 }
 
