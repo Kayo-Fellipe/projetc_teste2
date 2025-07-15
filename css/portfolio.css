@@ -373,7 +373,6 @@ button {
   padding: var(--space-3) var(--space-4);
   border-radius: 8px;
   flex-shrink: 0;
-  backdrop-filter: blur(10px);
 }
 
 .gallery-header h3 {
@@ -527,7 +526,6 @@ button {
   justify-content: center;
   border-radius: 8px;
   flex-shrink: 0;
-  backdrop-filter: blur(10px);
 }
 
 .gallery-thumbnails::-webkit-scrollbar {
