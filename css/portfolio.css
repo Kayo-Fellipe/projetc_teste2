@@ -664,7 +664,7 @@ button {
   .gallery-container {
     height: 100vh;
     max-height: 100vh;
-    gap: var(--space-2);
+    gap: var(--space-8);
   }
   
   .gallery-main {
