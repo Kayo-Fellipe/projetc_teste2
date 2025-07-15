@@ -455,7 +455,7 @@ class Portfolio {
           swipeIndicatorShown = true;
         }
       }
-    });
+    }, { passive: false });
 
     galleryMain.addEventListener('touchmove', (e) => {
       if (!touchStartX) return;
@@ -466,12 +466,15 @@ class Portfolio {
       const diffY = Math.abs(currentY - touchStartY);
       
       // Only handle horizontal swipes (not vertical scrolling)
-      if (diffX > diffY && diffX > 10) {
+      if (diffX > diffY && diffX > 20) {
         e.preventDefault();
         isSwiping = true;
         
         // Add visual feedback
         const img = galleryMain.querySelector('img');
+        const iframe = galleryMain.querySelector('iframe');
+        const activeElement = img || iframe;
+        
         if (img) {
           galleryMain.classList.add('swiping');
           const direction = currentX > touchStartX ? 'right' : 'left';
@@ -479,10 +482,10 @@ class Portfolio {
           img.classList.add(`swipe-${direction}`);
         }
       }
-    });
+    }, { passive: false });
 
     galleryMain.addEventListener('touchend', (e) => {
-      if (!isSwiping) return;
+      if (!touchStartX) return;
       
       touchEndX = e.changedTouches[0].screenX;
       touchEndY = e.changedTouches[0].screenY;
@@ -494,7 +497,10 @@ class Portfolio {
         img.classList.remove('swipe-left', 'swipe-right');
       }
       
-      this.handleSwipe();
+      // Only handle swipe if we were actually swiping
+      if (isSwiping) {
+        this.handleSwipe();
+      }
       
       // Reset touch coordinates
       touchStartX = 0;
@@ -502,7 +508,7 @@ class Portfolio {
       touchStartY = 0;
       touchEndY = 0;
       isSwiping = false;
-    });
+    }, { passive: false });
 
     // Mouse events for desktop testing
     let mouseStartX = 0;
@@ -564,9 +570,9 @@ class Portfolio {
   }
 
   handleSwipe() {
-    const swipeThreshold = 50;
-    const diffX = touchEndX - touchStartX;
-    const diffY = Math.abs(touchEndY - touchStartY);
+    const swipeThreshold = 80;
+    const diffX = this.touchEndX - this.touchStartX;
+    const diffY = Math.abs(this.touchEndY - this.touchStartY);
     
     // Only handle horizontal swipes
     if (Math.abs(diffX) > swipeThreshold && Math.abs(diffX) > diffY) {
