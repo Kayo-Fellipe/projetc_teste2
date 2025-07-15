@@ -589,7 +589,7 @@ button {
 /* Mobile Responsive Design */
 @media (max-width: 768px) {
 
-    .portfolio-grid {
+  .portfolio-grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: var(--space-3);
   }
@@ -704,9 +704,7 @@ button {
     max-height: 70vh;
   }
   
-  .gallery-header {
-    padding: var(--space-2);
-  }
+
   
   .gallery-header h3 {
     font-size: 1rem;
@@ -727,11 +725,9 @@ button {
     padding: 4px 8px;
   }
   
-  .gallery-thumbnails {
-    padding: var(--space-2);
-  }
 
-    .portfolio-grid {
+
+  .portfolio-grid {
     grid-template-columns: 1fr;
   }
 
