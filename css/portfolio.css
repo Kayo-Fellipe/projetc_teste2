@@ -699,12 +699,12 @@ button {
   .gallery-main img {
     max-width: 95%;
     max-height: 95%;
-    margin-bottom: -90px;
+    margin-bottom: -150px;
   }
 
    .gallery-header {
-    margin-bottom: -100px;
-    margin-top: 30px;
+    margin-bottom: -170px;
+    margin-top: 50px;
   }
   
   .gallery-main {
