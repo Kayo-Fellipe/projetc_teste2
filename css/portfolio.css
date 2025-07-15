@@ -588,6 +588,38 @@ button {
 
 /* Mobile Responsive Design */
 @media (max-width: 768px) {
+
+    .portfolio-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-3);
+  }
+
+  .portfolio-controls {
+    padding: var(--space-2);
+  }
+
+  .filter-buttons {
+    justify-content: center;
+  }
+
+  .filter-btn {
+    padding: var(--space-1) var(--space-2);
+    font-size: 0.8rem;
+  }
+
+  .sort-select {
+    width: 100%;
+  }
+
+  .modal-content {
+    width: 100%;
+    max-height: 100vh;
+  }
+
+  .gallery-container {
+    padding: 0;
+  }
+
   .gallery-container {
     gap: var(--space-3);
     height: 100vh;
@@ -698,6 +730,25 @@ button {
   .gallery-thumbnails {
     padding: var(--space-2);
   }
+
+    .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-item {
+    margin: 0 var(--space-2);
+  }
+
+  .gallery-main {
+    height: 75vh;
+    max-height: 75vh;
+  }
+
+  .swipe-indicator {
+    bottom: 10px;
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -721,59 +772,7 @@ button {
   }
 }
 
-@media (max-width: 768px) {
-  .portfolio-grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: var(--space-3);
-  }
 
-  .portfolio-controls {
-    padding: var(--space-2);
-  }
-
-  .filter-buttons {
-    justify-content: center;
-  }
-
-  .filter-btn {
-    padding: var(--space-1) var(--space-2);
-    font-size: 0.8rem;
-  }
-
-  .sort-select {
-    width: 100%;
-  }
-
-  .modal-content {
-    width: 100%;
-    max-height: 100vh;
-  }
-
-  .gallery-container {
-    padding: 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .portfolio-item {
-    margin: 0 var(--space-2);
-  }
-
-  .gallery-main {
-    height: 75vh;
-    max-height: 75vh;
-  }
-
-  .swipe-indicator {
-    bottom: 10px;
-    font-size: 0.8rem;
-    padding: 6px 12px;
-  }
-}
 
 /* Animation for portfolio items */
 .portfolio-item {
