@@ -589,6 +589,7 @@ button {
 /* Mobile Responsive Design */
 @media (max-width: 768px) {
   .gallery-container {
+    gap: var(--space-3);
     height: 100vh;
     max-height: 100vh;
   }
