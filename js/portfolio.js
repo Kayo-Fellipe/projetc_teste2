@@ -904,3 +904,10 @@ class Portfolio {
 document.addEventListener('DOMContentLoaded', () => {
   new Portfolio();
 });
+
+window.addEventListener('DOMContentLoaded', () => {
+    const indicator = document.querySelector('.swipe-indicator');
+    setTimeout(() => {
+      indicator.style.display = 'none';
+    }, 5000); // 5 segundos
+});

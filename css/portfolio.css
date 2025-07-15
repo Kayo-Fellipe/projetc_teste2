@@ -491,15 +491,15 @@ button {
   left: 50%;
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.8);
-  color: var(--color-light);
+  color: var(--color-light, #fff); /* valor padrão se a variável não existir */
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 0.9rem;
-  display: none;
+  display: flex;
   align-items: center;
   gap: 8px;
   z-index: 15;
-  animation: swipeHint 2s infinite;
+  animation: swipeHint 2s infinite, fadeOut 1s ease-in-out 4s forwards;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -516,6 +516,12 @@ button {
 @keyframes swipeArrow {
   0%, 100% { transform: translateX(0); }
   50% { transform: translateX(5px); }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
 }
 
 .gallery-thumbnails {
