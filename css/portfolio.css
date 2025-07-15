@@ -816,3 +816,16 @@ button {
   transform: translateX(20px);
   opacity: 0.7;
 }
+
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Reduz o espaço entre os elementos filhos */
+  padding: 0.5rem; /* Reduz padding geral se estiver muito espaçado */
+}
+
+.gallery-header,
+.gallery-thumbnails {
+  margin: 0;
+  padding: 0.25rem 0; /* Ou ajuste conforme o visual desejado */
+}
