@@ -726,11 +726,6 @@ button {
   }
   
 
-
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-  }
-
   .portfolio-item {
     margin: 0 var(--space-2);
   }
