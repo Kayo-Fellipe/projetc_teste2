@@ -363,6 +363,7 @@ button {
   height: 100%;
   display: flex;
   flex-direction: column;
+  gap: var(--space-4);
 }
 
 .gallery-header {
@@ -588,7 +589,7 @@ button {
 /* Mobile Responsive Design */
 @media (max-width: 768px) {
   .gallery-container {
-
+    gap: var(--space-3);
     height: 100vh;
     max-height: 100vh;
   }
@@ -663,7 +664,7 @@ button {
   .gallery-container {
     height: 100vh;
     max-height: 100vh;
-  
+    gap: var(--space-2);
   }
   
   .gallery-main {
@@ -723,7 +724,7 @@ button {
 @media (max-width: 768px) {
   .portfolio-grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-   
+    gap: var(--space-3);
   }
 
   .portfolio-controls {
