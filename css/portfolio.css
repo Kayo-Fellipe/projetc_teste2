@@ -704,8 +704,6 @@ button {
     max-height: 70vh;
   }
   
-
-  
   .gallery-header h3 {
     font-size: 1rem;
   }
@@ -724,7 +722,6 @@ button {
     font-size: 0.8rem;
     padding: 4px 8px;
   }
-  
 
   .portfolio-item {
     margin: 0 var(--space-2);
