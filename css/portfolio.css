@@ -703,7 +703,7 @@ button {
   }
 
    .gallery-header {
-    margin-bottom: -100px;
+    margin-bottom: -110px;
     margin-top: 40px;
   }
   
@@ -824,3 +824,4 @@ button {
   transform: translateX(20px);
   opacity: 0.7;
 }
+
