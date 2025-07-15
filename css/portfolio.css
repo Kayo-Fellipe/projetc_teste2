@@ -375,7 +375,7 @@ button {
   flex-shrink: 0;
   background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
-  margin-bottom: -90px;
+  margin-bottom: -120px;
 }
 
 .gallery-header h3 {
