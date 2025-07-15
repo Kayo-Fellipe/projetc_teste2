@@ -699,12 +699,12 @@ button {
   .gallery-main img {
     max-width: 95%;
     max-height: 95%;
-    margin-bottom: -10px;
+    margin-bottom: -70px;
   }
 
    .gallery-header {
     margin-bottom: -100px;
-    margin-top: 10px;
+    margin-top: 40px;
   }
   
   .gallery-main {
@@ -824,4 +824,3 @@ button {
   transform: translateX(20px);
   opacity: 0.7;
 }
-
