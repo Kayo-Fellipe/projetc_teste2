@@ -693,7 +693,7 @@ button {
 @media (max-width: 480px) {
   .gallery-container {
     height: 100vh;
-    max-height: 75vh;
+    max-height: 80vh;
   }
 
   .gallery-main img {
@@ -703,7 +703,7 @@ button {
   }
 
    .gallery-header {
-    margin-bottom: -70px;
+    margin-bottom: -75px;
     margin-top: 20px;
   }
   
