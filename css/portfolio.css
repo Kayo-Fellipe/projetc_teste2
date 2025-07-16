@@ -685,6 +685,34 @@ button {
 }
 
 /* Mobile Responsive Design */
+@media (max-width: 1024px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-3);
+  }
+  
+  .portfolio-controls {
+    padding: var(--space-4);
+    gap: var(--space-4);
+  }
+  
+  .filter-row {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+  
+  .filter-group {
+    min-width: 200px;
+  }
+
+  .portfolio-stats {
+    margin: 0 auto;
+    justify-content: center;
+  }
+}
+
+
 @media (max-width: 768px) {
 
   .portfolio-grid {
@@ -917,35 +945,6 @@ button {
     padding: 6px 12px;
   }
 }
-
-@media (max-width: 1024px) {
-  .portfolio-grid {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: var(--space-3);
-  }
-  
-  .portfolio-controls {
-    padding: var(--space-4);
-    gap: var(--space-4);
-  }
-  
-  .filter-row {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--space-3);
-  }
-  
-  .filter-group {
-    min-width: 200px;
-  }
-
-  .portfolio-stats {
-    margin: 0 auto;
-    justify-content: center;
-  }
-}
-
-
 
 /* Animation for portfolio items */
 .portfolio-item {
