@@ -670,6 +670,7 @@ button {
   /* Adjust header for mobile */
   .gallery-header {
     padding: var(--space-2) var(--space-3);
+    margin-top: 10px;
   }
   
   .gallery-header h3 {
