@@ -761,7 +761,7 @@ button {
     width: 100%;
     min-width: auto;
     text-align: center;
-    padding: var(--space-3) var(--space-4);
+    padding: var(--space-2) var(--space-4);
     font-size: 1rem;
   }
 
@@ -943,6 +943,12 @@ button {
     bottom: 10px;
     font-size: 0.8rem;
     padding: 6px 12px;
+  }
+}
+
+@media (max-width: 360px) {
+    .filter-btn {
+    min-width: 30px;
   }
 }
 
