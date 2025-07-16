@@ -851,7 +851,6 @@ button {
 
   .sort-select {
     font-size: 0.9rem;
-    padding: var(--space-8) var(--space-4);
   }
 
   .portfolio-stats {
