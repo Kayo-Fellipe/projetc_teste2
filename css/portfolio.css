@@ -838,20 +838,21 @@ button {
   }
 
   .filter-btn {
-    padding: 10px 16px;
+    padding: 10px 5px;
     font-size: 0.8rem;
-    min-width: 90px;
+    min-width: 50px;
     border-radius: 8px;
   }
 
   .filter-label {
     font-size: 0.75rem;
     margin-bottom: 4px;
+    
   }
 
   .sort-select {
-    padding: 12px 16px;
     font-size: 0.9rem;
+    padding: var(--space-3) var(--space-4);
   }
 
   .portfolio-stats {
