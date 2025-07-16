@@ -905,7 +905,7 @@ button {
     margin-bottom: -70px;
   }
 
-   .gallery-header {
+  .gallery-header {
     margin-bottom: -75px;
     margin-top: 10px;
   }
@@ -951,8 +951,8 @@ button {
 }
 
 @media (max-width: 360px) {
-    .filter-btn {
-    min-width: 30px;
+  .filter-btn {
+    min-width: 10px;
   }
 
   .close-modal{
