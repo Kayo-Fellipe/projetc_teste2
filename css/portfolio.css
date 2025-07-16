@@ -154,45 +154,40 @@ button {
   pointer-events: none;
 }
 
-.sort-select {
-  background: linear-gradient(135deg, var(--color-dark-600), var(--color-dark-700));
-  color: var(--color-light);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  padding: var(--space-2) var(--space-4);
-  border-radius: 12px;
-  font-size: 0.9rem;
+#sort-select {
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: 2px solid rebeccapurple;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
   font-weight: 500;
+  font-size: 1rem;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='white' stroke-width='2' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 12px 8px;
   transition: all 0.4s ease;
-  cursor: pointer;
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  position: relative;
   min-width: 180px;
 }
 
-.sort-select::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), transparent);
-  border-radius: 10px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
+/* Estilo das opções dentro do select */
+#sort-select option {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  border-radius: 10px; /* Alguns navegadores ignoram isso */
+  padding: 0.5rem;
 }
 
-.sort-select:hover::before {
-  opacity: 1;
-}
-
+/* Para remover o fundo azul de seleção (padrão do sistema) */
 .sort-select:focus {
   outline: none;
-  border-color: var(--color-primary-light);
-  box-shadow: 0 0 0 4px rgba(138, 43, 226, 0.3), 0 4px 20px rgba(138, 43, 226, 0.2);
-  transform: translateY(-2px);
+  border-color: rebeccapurple;
+  box-shadow: 0 0 0 2px rgba(102, 51, 153, 0.5);
 }
 
 .portfolio-stats {
