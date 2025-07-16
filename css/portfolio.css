@@ -950,14 +950,12 @@ button {
     .filter-btn {
     min-width: 30px;
   }
-    .gallery-container {
-    height: 100vh;
+
+  .gallery-container {
     max-height: 85vh;
   }
 
   .gallery-main img {
-    max-width: 95%;
-    max-height: 95%;
     margin-bottom: -90px;
   }
 
