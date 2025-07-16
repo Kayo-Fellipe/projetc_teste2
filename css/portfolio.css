@@ -950,6 +950,18 @@ button {
     .filter-btn {
     min-width: 30px;
   }
+    .gallery-container {
+    max-height: 90vh;
+  }
+
+  .gallery-main img {
+    margin-bottom: -90px;
+  }
+
+   .gallery-header {
+    margin-bottom: -75px;
+    margin-top: 10px;
+  }
 }
 
 /* Animation for portfolio items */
