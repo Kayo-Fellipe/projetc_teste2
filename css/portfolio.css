@@ -951,16 +951,23 @@ button {
     min-width: 30px;
   }
     .gallery-container {
-    max-height: 90vh;
+    height: 100vh;
+    max-height: 85vh;
   }
 
   .gallery-main img {
+    max-width: 95%;
+    max-height: 95%;
     margin-bottom: -90px;
   }
 
    .gallery-header {
-    margin-bottom: -75px;
+    margin-bottom: -65px;
     margin-top: 10px;
+  }
+
+  .gallery-thumbnails {
+    margin-top: 30px;
   }
 }
 
