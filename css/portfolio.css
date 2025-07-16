@@ -871,8 +871,12 @@ button {
     border-radius: 8px;
   }
 
+  .filter-row{
+    margin: 10px 10px
+  }
+
   .filter-label {
-    font-size: 0.75rem;
+    font-size: 0.80rem;
     margin-bottom: 4px;
     
   }
@@ -951,11 +955,17 @@ button {
     min-width: 30px;
   }
 
+  .close-modal{
+    right: 20px;
+  }
   .gallery-container {
+    height: 100vh;
     max-height: 85vh;
   }
 
   .gallery-main img {
+    max-width: 95%;
+    max-height: 95%;
     margin-bottom: -90px;
   }
 
