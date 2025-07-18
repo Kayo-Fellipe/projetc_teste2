@@ -180,6 +180,10 @@ button {
   width: 100%;
 }
 
+.filters, .parent-selector {
+  overflow: visible; /* permite o dropdown expandir */
+}
+
 .dropdown-list li {
   padding: 10px;
   cursor: pointer;
