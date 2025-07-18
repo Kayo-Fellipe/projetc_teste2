@@ -53,15 +53,18 @@
             </div>
           </div>
           
-          <div class="filter-group">
-            <span class="filter-label">Ordenar por</span>
-            <select class="sort-select" id="sort-select">
-              <option value="newest">Mais Recentes</option>
-              <option value="oldest">Mais Antigos</option>
-              <option value="name-asc">Nome (A-Z)</option>
-              <option value="name-desc">Nome (Z-A)</option>
-              <option value="type">Por Tipo</option>
-            </select>
+          <div class="custom-select-wrapper">
+            <div class="custom-select" id="custom-select">
+              <span id="selected-option">Mais Recentes</span>
+              <i class="arrow"></i>
+            </div>
+            <ul class="custom-options" id="custom-options">
+              <li data-value="recentes" class="selected">Mais Recentes</li>
+              <li data-value="antigos">Mais Antigos</li>
+              <li data-value="az">Nome (A–Z)</li>
+              <li data-value="za">Nome (Z–A)</li>
+              <li data-value="tipo">Por Tipo</li>
+            </ul>
           </div>
           
           <div class="portfolio-stats">

@@ -611,18 +611,35 @@ class Portfolio {
   }
   
   setupSorting() {
-    const sortSelect = document.getElementById('sort-select');
-    if (sortSelect) {
-      sortSelect.addEventListener('change', (e) => {
-        this.showLoading();
-        this.currentSort = e.target.value;
-        
-        setTimeout(() => {
-          this.applySorting();
-          this.hideLoading();
-        }, 300);
+    const select = document.getElementById('custom-select');
+    const options = document.getElementById('custom-options');
+    const selected = document.getElementById('selected-option');
+
+    select.addEventListener('click', () => {
+      options.style.display = options.style.display === 'block' ? 'none' : 'block';
+    });
+
+    document.querySelectorAll('.custom-options li').forEach(option => {
+      option.addEventListener('click', () => {
+        selected.textContent = option.textContent;
+
+        document.querySelectorAll('.custom-options li').forEach(o => o.classList.remove('selected'));
+        option.classList.add('selected');
+
+        options.style.display = 'none';
+
+        // Aqui você pode executar uma ação com o valor selecionado
+        const value = option.getAttribute('data-value');
+        console.log('Opção selecionada:', value);
       });
-    }
+    });
+
+    // Fecha se clicar fora
+    window.addEventListener('click', function (e) {
+      if (!select.contains(e.target) && !options.contains(e.target)) {
+        options.style.display = 'none';
+      }
+    });
   }
   
   applyFilters() {
