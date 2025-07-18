@@ -911,24 +911,3 @@ window.addEventListener('DOMContentLoaded', () => {
       indicator.style.display = 'none';
     }, 5000); // 5 segundos
 });
-
-const dropdown = document.querySelector('.custom-dropdown');
-const button = dropdown.querySelector('.dropdown-btn');
-const list = dropdown.querySelector('.dropdown-list');
-const options = list.querySelectorAll('li');
-
-button.addEventListener('click', () => {
-  dropdown.classList.toggle('open');
-});
-
-options.forEach(option => {
-  option.addEventListener('click', () => {
-    const selectedText = option.textContent;
-    const selectedValue = option.getAttribute('data-value');
-    button.textContent = `${selectedText} ▼`;
-    dropdown.classList.remove('open');
-
-    // Aqui você coloca a função que usava com o <select>
-    ordenarGaleria(selectedValue); // Exemplo
-  });
-});
