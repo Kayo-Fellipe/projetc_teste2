@@ -45,8 +45,8 @@ body, html {
 }
 
 .modal-content button {
-  background-color: #8A2BE2;
-  color: white;
+  background-color: #ffeb3b;
+  color: #121212;
   padding: 0.6rem 1.2rem;
   border: none;
   border-radius: 6px;
@@ -55,7 +55,7 @@ body, html {
 }
 
 .modal-content button:hover {
-  background-color: #9932CC;
+  background-color: #f9a825;
 }
 
 .hidden {
