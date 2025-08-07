@@ -1,5 +1,38 @@
 // Portfolio Data - Define all projects and their galleries
-const portfolioData = {
+const portfolioData = {sessao_lucaszanette_a_kriptonita: {
+    title: "Sessão Lucas Zanette",
+    type: "photography",
+    date: "2024-12-15",
+    category: "Ensaios",
+    items: [
+      {
+        type: "image",
+        src: "https://i.postimg.cc/52mQb8RY/DSC01270-Original.jpg",
+        thumbnail: "https://i.postimg.cc/52mQb8RY/DSC01270-Original.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/0NW6JPx9/DSC01284-Original.jpg",
+        thumbnail: "https://i.postimg.cc/0NW6JPx9/DSC01284-Original.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/0NW6JPx9/DSC01284-Original.jpg",
+        thumbnail: "https://i.postimg.cc/0NW6JPx9/DSC01284-Original.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/mg41vm8W/DSC01263-Original.jpg",
+        thumbnail: "https://i.postimg.cc/mg41vm8W/DSC01263-Original.jpg"
+      },
+      {
+        type: "image",
+        src: "https://i.postimg.cc/Ssnn63NC/DSC01286-Original.jpg",
+        thumbnail: "https://i.postimg.cc/Ssnn63NC/DSC01286-Original.jpg"
+      }
+    ]
+  },
+
   sessao_lays_nicolas: {
     title: "Sessão Lays & Nicolas",
     type: "photography",
@@ -324,8 +357,8 @@ const portfolioData = {
     items: [
       {
         type: "youtube",
-        src: "nQm9rewdjBs",
-        thumbnail: "https://i.postimg.cc/cCmpwTRn/DSC00876.jpg"
+        src: "cAahx1drEm0",
+        thumbnail: "https://i.postimg.cc/N0f9ML3N/DSC01281-Original.jpg"
       },
     ]
   },
