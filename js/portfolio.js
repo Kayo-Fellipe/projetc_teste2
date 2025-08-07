@@ -17,8 +17,8 @@ const portfolioData = {sessao_lucaszanette_a_kriptonita: {
       },
       {
         type: "image",
-        src: "https://i.postimg.cc/0NW6JPx9/DSC01284-Original.jpg",
-        thumbnail: "https://i.postimg.cc/0NW6JPx9/DSC01284-Original.jpg"
+        src: "https://i.postimg.cc/N0f9ML3N/DSC01281-Original.jpg",
+        thumbnail: "https://i.postimg.cc/N0f9ML3N/DSC01281-Original.jpg"
       },
       {
         type: "image",
