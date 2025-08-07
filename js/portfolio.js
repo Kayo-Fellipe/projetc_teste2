@@ -316,6 +316,20 @@ const portfolioData = {
     ]
   },
 
+  filmagem_lucaszanette_a_kriptonita: {
+    title: "Filmagem Lucas Zanette",
+    type: "videography",
+    date: "2024-12-05",
+    category: "Ensaios",
+    items: [
+      {
+        type: "youtube",
+        src: "nQm9rewdjBs",
+        thumbnail: "https://i.postimg.cc/cCmpwTRn/DSC00876.jpg"
+      },
+    ]
+  },
+
   filmagem_nicolas_lays: {
     title: "Filmagem Nicolas & Lays",
     type: "videography",
