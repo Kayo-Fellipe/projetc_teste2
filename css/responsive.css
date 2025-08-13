@@ -55,6 +55,21 @@
     margin-bottom: var(--space-4);
   }
 
+  .documentary-content {
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .documentary-description {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .documentary-description h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .footer-content {
     flex-direction: column;
     text-align: center;
@@ -181,6 +196,14 @@
   .author-img {
     margin-right: 0;
     margin-bottom: var(--space-2);
+  }
+
+  .documentary-description h3 {
+    font-size: 1.6rem;
+  }
+
+  .documentary-description p {
+    font-size: 1rem;
   }
 
   .contact-content {
