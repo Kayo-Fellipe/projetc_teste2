@@ -500,12 +500,6 @@ img {
   margin-bottom: var(--space-1);
 }
 
-.portfolio-info p {
-  color: var(--color-primary);
-  margin-bottom: var(--space-2);
-  font-size: 0.9rem;
-}
-
 .portfolio-link {
   display: inline-block;
   width: 40px;
