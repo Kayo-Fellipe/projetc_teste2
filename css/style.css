@@ -628,6 +628,9 @@ img {
   background-color: var(--color-dark-700);
   border: 2px solid transparent;
   transition: var(--transition);
+  display: block;
+  visibility: visible;
+  opacity: 1;
 }
 
 .video-container:hover {
@@ -644,6 +647,9 @@ img {
   height: 100%;
   border: none;
   border-radius: 14px;
+  display: block;
+  visibility: visible;
+  opacity: 1;
 }
 
 .documentary-description {
