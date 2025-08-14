@@ -235,7 +235,7 @@ button {
 
 .portfolio-item:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 50px rgba(138, 43, 226, 0.5);
   border-color: var(--color-primary);
 }
 
