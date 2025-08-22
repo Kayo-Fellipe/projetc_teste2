@@ -4,6 +4,8 @@ body, html {
   height: 100%;
 }
 
+
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -1033,10 +1035,9 @@ img {
 input:-webkit-autofill,
 textarea:-webkit-autofill {
   font-family: var(--font-main) !important;
-  -webkit-text-fill-color: var(--color-light);
-  transition: background-color 9999s ease-in-out 0s; /* evitar alteração de cor automática */
+  -webkit-text-fill-color: var(--color-light) !important;
+  transition: background-color 9999s ease-in-out 0s !important;
 }
-
 /* Footer */
 .footer {
   background-color: var(--color-dark-800);
@@ -1196,6 +1197,7 @@ textarea:-webkit-autofill {
   color: var(--color-light);
   font-weight: 600;
   font-size: 0.95rem;
+  text-align: left;
 }
 
 .testimonial-modal-content .form-group input,
