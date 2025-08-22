@@ -252,6 +252,17 @@
           </button>
         </div>
       </div>
+      
+      <!-- Botão para adicionar depoimento -->
+      <div class="add-testimonial-section">
+        <div class="add-testimonial-content">
+          <p>Compartilhe sua experiência e ajude outros clientes a conhecer meu trabalho!</p>
+          <button id="addTestimonialBtn" class="btn btn-primary add-testimonial-btn">
+            <i class="fas fa-plus"></i>
+            Deixar meu depoimento
+          </button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -329,6 +340,7 @@
     </div>
   </section>
 
+  <!-- Modal de Obrigado -->
   <div id="modal-thankyou" class="modal-overlay hidden">
     <div class="modal-content">
       <div class="check-icon">
@@ -352,7 +364,6 @@
       
       <div class="modal-header">
         <h2>Deixe seu depoimento</h2>
-        <p>Sua opinião é muito importante para nós!</p>
       </div>
       
       <form id="testimonialForm" action="https://formsubmit.co/kayofellipefer@gmail.com" method="POST" enctype="multipart/form-data">
@@ -448,6 +459,7 @@
   </div>
 
   <script type="module" src="js/script.js"></script>
+  <script src="js/testimonial-modal.js"></script>
 
 </body>
 </html>

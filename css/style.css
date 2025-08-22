@@ -867,6 +867,21 @@ img {
 
 }
 
+.add-testimonial-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.add-testimonial-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* se quiser tudo em coluna */
+  text-align: center;     /* centralizar o texto */
+}
+
 .testimonial-dots {
   display: flex;
   gap: var(--space-2);
