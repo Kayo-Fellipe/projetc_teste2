@@ -343,6 +343,84 @@
     </div>
   </div>
 
+  <!-- Modal de Depoimento -->
+  <div id="testimonial-modal" class="modal-overlay hidden">
+    <div class="modal-content testimonial-modal-content">
+      <button id="closeTestimonialModal" class="close-testimonial-modal">
+        <i class="fas fa-times"></i>
+      </button>
+      
+      <div class="modal-header">
+        <h2>Deixe seu depoimento</h2>
+        <p>Sua opinião é muito importante para nós!</p>
+      </div>
+      
+      <form id="testimonialForm" action="https://formsubmit.co/kayofellipefer@gmail.com" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="Novo Depoimento - Kayo Portfolio">
+        
+        <div class="form-group">
+          <label for="testimonial-name">Nome completo *</label>
+          <input type="text" id="testimonial-name" name="nome" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="testimonial-service">Serviço realizado *</label>
+          <select id="testimonial-service" name="servico" required>
+            <option value="">Selecione o serviço</option>
+            <optgroup label="Filmagem">
+              <option value="filmagem-casamento">Casamentos</option>
+              <option value="filmagem-corporativo">Corporativo</option>
+              <option value="filmagem-imobiliario">Imobiliário</option>
+              <option value="filmagem-publicidade">Publicidade</option>
+            </optgroup>
+            <optgroup label="Fotografia">
+              <option value="fotografia-ensaios">Ensaios</option>
+              <option value="fotografia-casamento">Casamentos</option>
+              <option value="fotografia-imoveis">Imóveis</option>
+              <option value="fotografia-esportivos">Esportivos</option>
+            </optgroup>
+            <optgroup label="Edição">
+              <option value="edicao-criativa">Criativa</option>
+              <option value="edicao-correcao">Correção</option>
+              <option value="edicao-redes-sociais">Redes Sociais</option>
+              <option value="edicao-trilha">Trilha Sonora</option>
+            </optgroup>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="testimonial-photo">Sua foto (opcional)</label>
+          <div class="file-upload-container">
+            <input type="file" id="testimonial-photo" name="foto" accept="image/*">
+            <div class="file-upload-placeholder">
+              <i class="fas fa-camera"></i>
+              <span>Clique para adicionar sua foto</span>
+              <small>JPG, PNG ou GIF (máx. 5MB)</small>
+            </div>
+            <img id="photo-preview" class="photo-preview hidden" alt="Preview da foto">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="testimonial-message">Seu depoimento *</label>
+          <textarea id="testimonial-message" name="depoimento" rows="4" placeholder="Conte como foi sua experiência trabalhando comigo..." required></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="testimonial-improvement">O que poderia melhorar? (opcional)</label>
+          <textarea id="testimonial-improvement" name="melhorias" rows="3" placeholder="Sugestões para melhorar ainda mais o serviço..."></textarea>
+        </div>
+        
+        <div class="modal-actions">
+          <button type="button" id="cancelTestimonial" class="btn btn-secondary">Cancelar</button>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-paper-plane"></i> Enviar depoimento
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="container">

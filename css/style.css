@@ -1120,3 +1120,235 @@ textarea:-webkit-autofill {
   transform: translateY(-5px);
 
 }
+/* Testimonial Modal Styles */
+.testimonial-modal-content {
+  max-width: 600px;
+  width: 95%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close-testimonial-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--color-light);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1001;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.close-testimonial-modal:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-primary);
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: var(--space-4);
+  padding-right: var(--space-6);
+}
+
+.modal-header h2 {
+  color: var(--color-light);
+  margin-bottom: var(--space-1);
+  font-size: 1.8rem;
+}
+
+.modal-header p {
+  color: var(--color-gray);
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+
+.testimonial-modal-content .form-group {
+  margin-bottom: var(--space-3);
+}
+
+.testimonial-modal-content .form-group label {
+  display: block;
+  margin-bottom: var(--space-1);
+  color: var(--color-light);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.testimonial-modal-content .form-group input,
+.testimonial-modal-content .form-group select,
+.testimonial-modal-content .form-group textarea {
+  width: 100%;
+  padding: var(--space-2);
+  background-color: var(--color-dark-600);
+  border: 2px solid var(--color-dark-600);
+  border-radius: var(--border-radius);
+  color: var(--color-light);
+  font-family: var(--font-main);
+  font-size: 1rem;
+  transition: var(--transition);
+  box-sizing: border-box;
+}
+
+.testimonial-modal-content .form-group input:focus,
+.testimonial-modal-content .form-group select:focus,
+.testimonial-modal-content .form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.1);
+}
+
+.testimonial-modal-content .form-group select {
+  cursor: pointer;
+}
+
+.testimonial-modal-content .form-group select option {
+  background-color: var(--color-dark-600);
+  color: var(--color-light);
+}
+
+.testimonial-modal-content .form-group select optgroup {
+  background-color: var(--color-dark-700);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.file-upload-container {
+  position: relative;
+  border: 2px dashed var(--color-dark-600);
+  border-radius: var(--border-radius);
+  padding: var(--space-4);
+  text-align: center;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.file-upload-container:hover {
+  border-color: var(--color-primary);
+  background-color: rgba(138, 43, 226, 0.05);
+}
+
+.file-upload-container input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.file-upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--color-gray);
+}
+
+.file-upload-placeholder i {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: var(--space-1);
+}
+
+.file-upload-placeholder span {
+  font-weight: 600;
+  color: var(--color-light);
+}
+
+.file-upload-placeholder small {
+  font-size: 0.8rem;
+  color: var(--color-gray);
+}
+
+.photo-preview {
+  max-width: 150px;
+  max-height: 150px;
+  border-radius: var(--border-radius);
+  object-fit: cover;
+  border: 2px solid var(--color-primary);
+  margin-top: var(--space-2);
+}
+
+.modal-actions {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: flex-end;
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-dark-600);
+}
+
+.modal-actions .btn {
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+}
+
+/* Error states */
+.error-input {
+  border-color: var(--color-error) !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
+.error-message {
+  color: var(--color-error);
+  font-size: 0.85rem;
+  margin-top: var(--space-1);
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.error-message::before {
+  content: '⚠';
+  font-size: 0.9rem;
+}
+
+/* Mobile responsive for testimonial modal */
+@media (max-width: 768px) {
+  .testimonial-modal-content {
+    width: 98%;
+    margin: var(--space-2);
+    max-height: 95vh;
+  }
+  
+  .modal-header {
+    padding-right: var(--space-4);
+  }
+  
+  .modal-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+  }
+  
+  .modal-actions .btn {
+    width: 100%;
+  }
+  
+  .file-upload-container {
+    padding: var(--space-3);
+  }
+  
+  .file-upload-placeholder i {
+    font-size: 1.5rem;
+  }
+}
