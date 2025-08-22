@@ -1,0 +1,23 @@
+{
+  "name": "kayo-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio website for Kayo Fellipe - Photographer, Filmmaker, and Video Editor",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve .",
+    "build": "echo 'Static site - no build process needed'",
+    "preview": "npx serve ."
+  },
+  "keywords": [
+    "portfolio",
+    "photography",
+    "filmmaker",
+    "video-editing",
+    "website"
+  ],
+  "author": "Kayo Fellipe",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}
