@@ -2,7 +2,7 @@
 const portfolioData = {sessao_lucaszanette_a_kriptonita: {
     title: "Sessão Lucas Zanette",
     type: "photography",
-    date: "2024-12-15",
+    date: "2025-07-20",
     category: "Ensaios",
     items: [
       {
@@ -36,7 +36,7 @@ const portfolioData = {sessao_lucaszanette_a_kriptonita: {
   sessao_lays_nicolas: {
     title: "Sessão Lays & Nicolas",
     type: "photography",
-    date: "2024-12-15",
+    date: "2025-07-05",
     category: "Ensaios",
     items: [
       {
@@ -175,7 +175,7 @@ const portfolioData = {sessao_lucaszanette_a_kriptonita: {
   sessao_ana_rodrigues: {
     title: "Sessão Ana Rodrigues",
     type: "photography",
-    date: "2024-12-10",
+    date: "2025-04-20",
     category: "Ensaios",
     items: [
       {
@@ -244,7 +244,7 @@ const portfolioData = {sessao_lucaszanette_a_kriptonita: {
   sessao_leonardo_monique: {
     title: "Sessão Leonardo & Monique",
     type: "photography",
-    date: "2024-11-20",
+    date: "2025-01-12",
     category: "Ensaios",
     items: [
       {
@@ -298,7 +298,7 @@ const portfolioData = {sessao_lucaszanette_a_kriptonita: {
   sessao_evandro_pamella: {
     title: "Sessão Evandro & Pamella",
     type: "photography",
-    date: "2024-10-15",
+    date: "2024-12-24",
     category: "Ensaios",
     items: [
       {
@@ -352,7 +352,7 @@ const portfolioData = {sessao_lucaszanette_a_kriptonita: {
   filmagem_lucaszanette_a_kriptonita: {
     title: "Filmagem Lucas Zanette",
     type: "videography",
-    date: "2024-12-05",
+    date: "2025-07-20",
     category: "Ensaios",
     items: [
       {
@@ -366,7 +366,7 @@ const portfolioData = {sessao_lucaszanette_a_kriptonita: {
   filmagem_nicolas_lays: {
     title: "Filmagem Nicolas & Lays",
     type: "videography",
-    date: "2024-12-15",
+    date: "2025-05-05",
     category: "Ensaios",
     items: [
       {
@@ -380,7 +380,7 @@ const portfolioData = {sessao_lucaszanette_a_kriptonita: {
   filmagem_anarodrigues: {
     title: "Filmagem Ana Rodrigues",
     type: "videography",
-    date: "2024-12-05",
+    date: "2025-04-20",
     category: "Ensaios",
     items: [
       {
